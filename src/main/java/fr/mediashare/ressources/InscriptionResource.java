@@ -1,5 +1,7 @@
 package fr.mediashare.ressources;
 
+import java.sql.Connection;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,27 +10,29 @@ import javax.ws.rs.core.MediaType;
 
 import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.User;
+import fr.mediashare.utils.Requests;
+import fr.mediashare.utils.SQLiteConnection;
 
-
-
-@Path("/signin")
+@Path("/register")
 @Produces(MediaType.APPLICATION_JSON)
 public class InscriptionResource {
-
 	@GET 
 	public FeedBack getTest() {
-		//FeedBack fb = 
-		//fb.setMessage("ok");
-		//fb.setSuccess(0);
 		return new FeedBack(true, "ok");
 	}
 	
 	@POST
-	public FeedBack signIn(User user) {
-		if(user.getPseudo().equals("toto")) {
+	public FeedBack register(User user) {
+		Connection c = SQLiteConnection.getConnection();
+		Requests r = new Requests(c);
+		
+		if(!user.getMdp().equals(user.getMdp2()))
+			return new FeedBack(true, "Erreurs, mots de passe différents");
+		else{
+			r.insertUser(user.getEmail(), user.getPseudo(), user.getMdp(), 0);
+			SQLiteConnection.close();
+	
 			return new FeedBack(true, "Inscription réussie");
-		} else {
-			return new FeedBack(false, "pseudo différent de toto");
 		}
 	}
 }
