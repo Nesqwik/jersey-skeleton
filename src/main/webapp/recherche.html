@@ -25,16 +25,17 @@
 				<div class="btn-group" role="group">
 					<form method="get" name="formulaireRecherche" action="">
 						<br>Mot(s) clé(s) : <INPUT type="text" SIZE="20"
-							name="recherche" value=""> <INPUT TYPE="button"
-							Value="Valider" name="valider"> </br>
+							name="recherche" id="recherche"> <INPUT TYPE="button"
+							name="recherche" value="Valider" id="valider"> </br>
 					</form>
 				</div>
 			</div>
 		</div>
+		<div id="reponse"></div>
 	</center>
 	<script type="text/javascript">
 			$(document).ready(function() {
-				$("#post").click(function () {<!-- TODO RECHERCHE -->});
+				$("#valider").click(function () {getResultat($('#recherche').val())});
 			});
   		</script>
 </body>

@@ -3,7 +3,7 @@ function register(pseudo, email, mdp, mdp2){
 		$.ajax({
 			type : 'POST',
 			contentType : 'application/json',
-			url : "v1/signin/",
+			url : "v1/register/",
 			dataType : "json",
 			data : JSON.stringify({
 				"email" : email,

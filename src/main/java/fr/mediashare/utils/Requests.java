@@ -18,7 +18,7 @@ public class Requests {
 	public void insertUser(String mail, String pseudo, String mdp, int userType) {
 		PreparedStatement stmt = null;
 		try {
-			String sql = "INSERT INTO UTILISATEUR VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO utilisateur VALUES(?, ?, ?, ?)";
 			stmt = c.prepareStatement(sql);
 			stmt.setString(1, mail);
 			stmt.setString(2, pseudo);
