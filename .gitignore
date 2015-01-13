@@ -5,3 +5,4 @@
 .settings
 target/
 bdd_media
+*.mp3
