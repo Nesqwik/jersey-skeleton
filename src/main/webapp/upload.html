@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Mediashare</title>
+		<meta charset='utf-8'>
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+		<!-- Code local -->
+		<script src="all.js"></script>
+	</head>
+	<body>
+		<center>
+			<h1><b>Mediashare</b></h1>
+		</center>
+		<div class="container">
+			<div class="row">
+				<input name="file" id="file" type="file" placeholder="Upload un fichier" multiple />
+				<div class="btn-group" role="group">
+					<button id="post" class="btn btn-primary">Upload</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#post").click(function () {<!-- TODO UPLOAD -->});
+			});
+  		</script>
+	</body>
+</html>
