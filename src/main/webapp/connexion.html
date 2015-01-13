@@ -26,8 +26,7 @@
 			<center>
 				<div class="btn-group" role="group">
 
-					<form method="get" name="formulaireConnexion" action="">
-
+					<span class="title"><h1> Connexion </h1></span> <br/>
 					<br>Login :</br>
 					<INPUT type="text" SIZE="20" name=login value="">
 					<br></br>
@@ -38,13 +37,16 @@
 
 					<br></br>
 
-					<INPUT type="submit">
+					<button id="valider" class="btn btn-primary">Valider</button>
 					</form>
 				</div>
 				</center>
 			</div>	
 		</div>
-		<!-- <script type="text/javascript">
-  		</script> -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#valider").click(function() {connect($('#login').val(), $('#password').val())});
+			});
+  		</script>
 	</body>
 </html>

@@ -1,0 +1,4 @@
+function connect(login, password){
+	
+		
+}
