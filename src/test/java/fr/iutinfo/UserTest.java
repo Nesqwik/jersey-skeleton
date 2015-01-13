@@ -25,7 +25,7 @@ public class UserTest extends JerseyTest {
         return new App();
     }
 
-	@Test
+	/*@Test
 	public void testReadUserWithNameFooAsJsonString() {
 		createUser("foo");
 		String json = target("/user/foo").request().get(String.class);
@@ -90,6 +90,6 @@ public class UserTest extends JerseyTest {
 	    Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 		User savedUser = target("/user").request().post(userEntity).readEntity(User.class);
 		return savedUser;
-	}
+	}*/
 	
 }
