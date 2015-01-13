@@ -13,14 +13,16 @@ function register(pseudo, email, mdp, mdp2){
 			}),
 			success : function(data, textStatus, jqXHR) {
 				console.log(data)
-				$("#reponse").html(data.message);
+				if(data.success)
+					window.location.replace("murGeneral.html");
+				else
+					$("#reponse").html(data.message);
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('postUser error: ' + textStatus);
+				alert('erreur');
 			}
 		});
 	}
 	else
 		$("#reponse").html('Erreur, mots de passe différents');
-		
 }
