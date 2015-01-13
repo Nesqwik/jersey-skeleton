@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<title>Mediashare - Recherche</title>
-		<meta charset='utf-8'>
-	</head>
-	<body>
-		<center>
-			<h1>
-				<b>Recherche</b>
-			</h1>
-		</center>
+<head>
+<title>Mediashare - Recherche</title>
+<meta charset='utf-8'>
+<!-- Code local -->
+<script src="js/recherche.js"></script>
+</head>
+<body>
+	<center>
+		<h1>
+			<b>Recherche</b>
+		</h1>
 		<div class="container">
 			<div class="row">
 				<div class="btn-group" role="group">
-				<center>
-					<br>Mot(s) clé(s) :
-						<INPUT type="text" SIZE="20" name="recherche" value="">
-						<INPUT TYPE="button" Value="Valider" name="valider">					
-					</br>
-				</center>
+					<form method="get" name="formulaireRecherche" action="">
+						<br>Mot(s) clé(s) : <INPUT type="text" SIZE="20"
+							name="recherche" value=""> <INPUT TYPE="button"
+							Value="Valider" name="valider"> </br>
+					</form>
 				</div>
-			</div>	
+			</div>
 		</div>
-		<!--<script type="text/javascript">
+	</center>
+	<script type="text/javascript">
 			$(document).ready(function() {
-				$("#inscription").click(function () {afficherInscription()});
+				$("#post").click(function () {<!-- TODO RECHERCHE -->});
 			});
-  		</script>-->
-	</body>
+  		</script>
+</body>
 </html>

@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.mediashare;
 
 import java.io.File;
 import java.io.IOException;

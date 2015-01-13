@@ -1,4 +1,4 @@
-package fr.iutinfo;
+package fr.mediashare.model;
 
 public class User {
 	private String pseudo, email, mdp, mdp2;

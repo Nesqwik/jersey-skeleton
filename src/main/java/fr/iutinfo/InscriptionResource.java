@@ -13,14 +13,12 @@ public class InscriptionResource {
 
 	@GET 
 	public FeedBack getTest() {
-		//FeedBack fb = 
-		//fb.setMessage("ok");
-		//fb.setSuccess(0);
 		return new FeedBack(true, "ok");
 	}
 	
 	@POST
 	public FeedBack signIn(User user) {
+		// select bdd
 		if(user.getPseudo().equals("toto")) {
 			return new FeedBack(true, "Inscription réussie");
 		} else {
