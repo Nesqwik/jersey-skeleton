@@ -60,4 +60,28 @@ public class Requests {
 		}
 		return tmp;
 	}
+
+	public boolean emailExist(String email) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.prepareStatement("SELECT mail from utilisateur where mail = ?");
+			stmt.setString(1, email);
+			
+			rs = stmt.executeQuery();
+			return rs.next();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }

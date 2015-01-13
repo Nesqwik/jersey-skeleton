@@ -23,20 +23,18 @@ public class InscriptionResource {
 	
 	@POST
 	public FeedBack register(User user) {
-		try{
 			Connection c = SQLiteConnection.getConnection();
 			Requests r = new Requests(c);
 			
-			if(!user.getMdp().equals(user.getMdp2()))
+			if (!user.getMdp().equals(user.getMdp2()))
 				return new FeedBack(false, "Erreurs, mots de passe différents");
+			else if(r.emailExist(user.getEmail()))
+				return new FeedBack(false, "Cet e-mail est déjà repertorié, rééssayez");
 			else{
 				r.insertUser(user.getEmail(), user.getPseudo(), user.getMdp(), 0);
 				SQLiteConnection.close();
 		
 				return new FeedBack(true, "Inscription réussie");
 			}
-		} catch (Exception e){
-			return new FeedBack(false, "Cet e-mail est déjà repertorié, rééssayez");
-		}
 	}
 }
