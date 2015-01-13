@@ -1,19 +1,22 @@
 function connect(login, password){
-	$.getJSON("v1/connexion/" + login, function(data) {
-		
-		console.log(data)
-		if(data.success)
-			$("#reponse").html('login ok');
-		else
-			$("#reponse").html('login pas ok');
-	});
-	
-	$.getJSON("v1/connexion/" + password, function(data) {
-		
-		console.log(data)
-		if(data.success)
-			$("#reponse").html('password ok');
-		else
-			$("#reponse").html('password pas ok');
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/connexion/",
+		dataType : "json",
+		data : JSON.stringify({
+			"login" : login,
+			"password" : password
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log(data)
+			if(data.success)
+				$("#reponse").html('ok');
+			else
+				$("#reponse").html('pas ok');
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
 	});
 }
