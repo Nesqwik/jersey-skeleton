@@ -3,7 +3,6 @@
 	<head>
 		<title>Mediashare</title>
 		<meta charset='utf-8'>
-		<!-- Redirection ( pas pour le moment ) <meta http-equiv="refresh" content="0; URL=inscription.html"> -->
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -18,20 +17,36 @@
 	</head>
 	<body>
 		<center>
-			<h1><b>Mediashare</b></h1>
+			<h1>
+				<b>Mediashare</b>
+			</h1>
 		</center>
 		<div class="container">
 			<div class="row">
-				<input name="file" id="file" type="file" placeholder="Upload un fichier" multiple />
+			<center>
 				<div class="btn-group" role="group">
-					<button id="post" class="btn btn-primary">Upload</button>
+				
+					<br>Login :</br>
+						<INPUT type="text" SIZE="20" name=login value="">
+					<br></br>
+	
+					<br>Mot de passe :</br>
+						<INPUT type="text" SIZE="20" name=mdp value="">
+					<br></br>
+
+					<br></br>
+						<INPUT type="submit">
+				
 				</div>
-			</div>
+				</center>
+			</div>	
 		</div>
-		<script type="text/javascript">
+		<!--  <script type="text/javascript">
 			$(document).ready(function() {
-				$("#post").click(function () {<!-- TODO UPLOAD -->});
+				$("#get").click(function () {getUser($('#user').val())});
+				$("#post").click(function () {postUser($('#user').val())});
+				$("#list").click(function () {listUsers()});
 			});
-  		</script>
+  		</script>-->
 	</body>
 </html>

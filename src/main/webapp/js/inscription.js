@@ -13,11 +13,10 @@ function signIn(pseudo, email, mdp, mdp2){
 			}),
 			success : function(data, textStatus, jqXHR) {
 				console.log(data)
-				$("#reponse").html(data.success);
-				/*if(data.success == true)
-					
+				if(data.success)
+					$("#reponse").html('ok');
 				else
-					$("#reponse").html('pas ok');*/
+					$("#reponse").html('pas ok');
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert('postUser error: ' + textStatus);
