@@ -1,24 +1,28 @@
 package fr.iutinfo;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/user")
+
+@Path("/signin")
 @Produces(MediaType.APPLICATION_JSON)
 public class InscriptionResource {
-	private static Map<Integer, User> users = new HashMap<>();
+
+	@GET 
+	public FeedBack getTest() {
+		FeedBack fb = new FeedBack(1, "ok");
+		return fb;
+	}
 	
 	@POST
-	public int signIn(User user) {
+	public FeedBack signIn(User user) {
 		if(user.getPseudo().equals("toto")) {
-			return 0;
+			return new FeedBack(1, "Inscription réussie");
 		} else {
-			return 1;
+			return new FeedBack(0, "pseudo différent de toto");
 		}
 	}
 }

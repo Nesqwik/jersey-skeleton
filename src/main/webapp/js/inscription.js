@@ -3,7 +3,7 @@ function signIn(pseudo, email, mdp, mdp2){
 		$.ajax({
 			type : 'POST',
 			contentType : 'application/json',
-			url : "v1/user/",
+			url : "v1/signin/",
 			dataType : "json",
 			data : JSON.stringify({
 				"email" : email,
@@ -12,10 +12,12 @@ function signIn(pseudo, email, mdp, mdp2){
 				"mdp2" : mdp2
 			}),
 			success : function(data, textStatus, jqXHR) {
-				if(data == 0)
-					$("#reponse").html('Ok');
+				console.log(data)
+				$("#reponse").html(data.success);
+				/*if(data.success == true)
+					
 				else
-					$("#reponse").html('pas ok');
+					$("#reponse").html('pas ok');*/
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert('postUser error: ' + textStatus);
