@@ -7,7 +7,9 @@ import javax.ws.rs.core.Application;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import ressources.InscriptionResource;
+import fr.mediashare.App;
+import fr.mediashare.ressources.InscriptionResource;
+
 
 public class InscriptionTest extends JerseyTest {
 
