@@ -1,4 +1,4 @@
-package ressources;
+package fr.mediashare.ressources;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import model.User;
+import fr.mediashare.model.User;
+
 
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)

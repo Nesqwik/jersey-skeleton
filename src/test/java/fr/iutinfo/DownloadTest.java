@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import fr.mediashare.Download;
+
 public class DownloadTest {
 
 	@Test
