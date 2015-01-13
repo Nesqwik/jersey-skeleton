@@ -3,7 +3,6 @@
 	<head>
 		<title>Mediashare - index</title>
 		<meta charset='utf-8'>
-		<meta http-equiv="refresh" content="0; URL=inscription.html">
 	</head>
 	<body>
 		<center>
@@ -14,16 +13,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="btn-group" role="group">
-					<button id="inscription" class="btn btn-default">S'inscrire</button>
-					<button id="connexion" class="btn btn-default">Se connecter</button>
+					<INPUT TYPE="button" Value="Inscription" name="inscription" onclick="window.location='inscription.html';">
+					<INPUT TYPE="button" Value="Connexion" name="connexion" onclick="window.location='connexion.html';">
 				</div>
 			</div>	
 		</div>
-		<!--  <script type="text/javascript">
+		<!--<script type="text/javascript">
 			$(document).ready(function() {
-				$("#get").click(function () {getUser($('#user').val())});
-				$("#post").click(function () {postUser($('#user').val())});
-				$("#list").click(function () {listUsers()});
+				$("#inscription").click(function () {afficherInscription()});
 			});
   		</script>-->
 	</body>
