@@ -1,13 +1,83 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset=utf-8>
-		<meta name="viewport" content="width=620">
-		<title>Mediashare : drag'n'drop</title>
+		<title>Mediashare</title>
+		<meta charset='utf-8'>
+		<!-- Redirection ( pas pour le moment ) <meta http-equiv="refresh" content="0; URL=inscription.html"> -->
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+		<!-- Code local -->
+		<script src="all.js"></script>
 	</head>
 	<body>
+<<<<<<< HEAD
+		<center>
+			<h1><b>Mediashare</b></h1>
+		</center>
+		<div class="container">
+			<div class="row"><center>
+				<input id="file" type="file" placeholder="Upload un fichier" value="" multiple />
+				<div class="btn-group" role="group">
+					<button id="upload" class="btn btn-primary">Upload</button>
+				</div>
+			</center></div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#upload").click(function () {
+					/**
+					var path = $("#file").val();
+					if(path==""){
+						alert("Veuillez choisir un fichier à uploader !");
+					}else{
+						alert("fichier en cours d'enregistrement ...");
+						var tmp = path.split("\\");
+						alert("split");
+						//var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+						//fileSystem.createTextFile("test",true);
+						getFile("test.txt", {create: true});alert("created");
+						/**
+						var fw =fileSystem.OpenTextFile("\\files\\"+tmp[tmp.length-1], 2 ,true);// ouvre le fichier en écriture
+						alert("opened \\files\\"+tmp[tmp.length-1]);
+						var fr = fopen(path,0); // ouvre le fichier en lecture
+						if(fw!=-1&&fr!=-1){// si le fichier s'est bien ouvert
+						    var str = path;//
+						    fwrite(fw, str); // écrit str dans le fichier
+						    fw.Close(); // ferme le fichier
+						    fr.Close();
+						}**/
+						alert("fichier enregistré");
+					}**/
+					function onInitFs(fs) {
+					   fs.root.getFile('test.txt', {create: true}, writeFile, errorHandler);
+					}
+					function writeFile(fileEntry) {
+					   fileEntry.createWriter(function(fileWriter) {
+					      fileWriter.onwriteend = function(e) {
+					         alert('OK.');
+					      };
+					      fileWriter.onerror = function(e) {
+					         alert('Error: ' + e.toString());
+					      };
+					      // On crée un objet Blob pour écrire dans le fichier.
+					      var data = new Blob(['test'], {type: 'text/plain'});
+					      fileWriter.write(data);
+					   }, errorHandler);
+					}
+					
+					window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+					window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorHandler);
+				})
+			});
+  		</script>
+=======
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
 			<li><img src="banniere.png" alt="Banniere du site" style="width:200px;height:94px"></li>
@@ -146,5 +216,6 @@
 				pageTracker._trackPageview();
 			} catch(err) {}
 		</script>
+>>>>>>> ff3dcfafa2645e299601d0efb45e59f1e2969e75
 	</body>
 </html>
