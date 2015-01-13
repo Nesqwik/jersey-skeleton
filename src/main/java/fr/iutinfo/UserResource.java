@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response.Status;
 public class UserResource {
 	private static Map<Integer, User> users = new HashMap<>();
 	
-	@POST
+	/*@POST
 	public User createUser(User user) {
 		int id = users.size();
 		user.setId(id+1);
@@ -83,6 +83,6 @@ public class UserResource {
 	@GET
 	public List<User> getUsers(@DefaultValue("10") @QueryParam("limit") int limit) {
 		return new ArrayList<User>(users.values());
-	}
+	}*/
 
 }
