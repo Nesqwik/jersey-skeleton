@@ -1,7 +1,7 @@
 package fr.iutinfo;
 
 public class User {
-	private String name;
+	private String pseudo, email, mdp, mdp2;
 	private int id = 0;
 
 	public User(int id, String name) {
