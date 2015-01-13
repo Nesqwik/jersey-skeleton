@@ -10,8 +10,12 @@ import javax.ws.rs.core.MediaType;
 
 import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.User;
+<<<<<<< HEAD
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
+=======
+
+>>>>>>> 5e535e2e448b4ba60873c577c0fe70d5c399dc28
 
 @Path("/signin")
 @Produces(MediaType.APPLICATION_JSON)
