@@ -1,6 +1,6 @@
 package fr.mediashare.ressources;
 
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +12,7 @@ import fr.mediashare.model.User;
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
 
-	@GET 
+	@POST 
 	public FeedBack getLogin(User user) {
 		if(user.getPseudo().equals("toto")) {
 			return new FeedBack(true, "ok");
@@ -20,7 +20,7 @@ public class ConnexionResource {
 		return new FeedBack(true, "pas ok");
 	}
 	
-	@GET
+	@POST
 	public FeedBack getPassword(User user) {
 		if(user.getPseudo().equals("toto")) {
 			return new FeedBack(true, "ok");
