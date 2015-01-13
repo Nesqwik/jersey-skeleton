@@ -1,9 +1,9 @@
-function signIn(pseudo, email, mdp, mdp2){
+function register(pseudo, email, mdp, mdp2){
 	if (mdp == mdp2){
 		$.ajax({
 			type : 'POST',
 			contentType : 'application/json',
-			url : "v1/signin/",
+			url : "v1/register/",
 			dataType : "json",
 			data : JSON.stringify({
 				"email" : email,
@@ -13,10 +13,7 @@ function signIn(pseudo, email, mdp, mdp2){
 			}),
 			success : function(data, textStatus, jqXHR) {
 				console.log(data)
-				if(data.success)
-					$("#reponse").html('ok');
-				else
-					$("#reponse").html('pas ok');
+				$("#reponse").html(data.message);
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				alert('postUser error: ' + textStatus);
