@@ -19,16 +19,16 @@ public class SQLiteConnection {
 	private static void connect() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:data/db/database");
+			c = DriverManager.getConnection("jdbc:sqlite:bdd_media");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Impossible de se connecter � la base de donn�e !");
+			System.err.println("Impossible de se connecter a la base de donnee !");
 			System.exit(0);
 		} catch (ClassNotFoundException e) {
 			System.err.println("Impossible de charger le driver ! (driver incorrect ou inexistant)");
 			System.exit(0);
 		}
-		System.out.println("Connexion �tablie avec la base de donn�e !");
+		System.out.println("Connexion etablie avec la base de donnee !");
 	}
 	
 	public static void close() {

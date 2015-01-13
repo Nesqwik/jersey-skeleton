@@ -4,18 +4,10 @@ public class User {
 	private String pseudo, email, mdp, mdp2;
 	private int id = 0;
 
-	public User(String pseudo, String email, String mdp, String mdp2) {
+	public User(String pseudo, String email, String mdp) {
 		this.setPseudo(pseudo);
 		this.setEmail(email);
 		this.setMdp(mdp);
-	}
-	
-	public String getMdp2() {
-		return mdp2;
-	}
-	
-	public void setMdp2(String mdp2) {
-		this.mdp2 = mdp2;
 	}
 
 	public User() {
@@ -52,5 +44,13 @@ public class User {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public String getMdp2() {
+		return mdp2;
+	}
+
+	public void setMdp2(String mdp2) {
+		this.mdp2 = mdp2;
 	}
 }

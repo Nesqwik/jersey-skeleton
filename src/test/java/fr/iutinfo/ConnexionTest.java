@@ -1,6 +1,5 @@
 package fr.iutinfo;
 
-import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 

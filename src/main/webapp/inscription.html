@@ -18,6 +18,11 @@
 	</head>
 	
 	<body>
+	<div class="collapse navbar-collapse" id="navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			<li class="active"><p class="navbar-text"><a href="index.html">Accueil</a></p></li>
+		</ul>
+	</div>
 		<div class="container">
 			<div class="row">
 				<span class="title"> <h1> Inscription </h1></span> <br />
@@ -33,7 +38,7 @@
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#valider").click(function () {signIn($('#email').val(), $('#pseudo').val(), $('#mdp').val(), $('#mdp2').val())});
+				$("#valider").click(function () {register($('#email').val(), $('#pseudo').val(), $('#mdp').val(), $('#mdp2').val())});
 			});
   		</script>
 	</body>
