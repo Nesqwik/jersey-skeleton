@@ -6,7 +6,7 @@ function getUser(name) {
 
 function afficheUser(data) {
 	console.log(data);
-	$("#reponse").html(data.id + " : " + data.name);
+	$("#reponse").html(data.idv + " : " + data.name);
 }
 
 function postUser(name) {
@@ -17,7 +17,7 @@ function postUser(name) {
 		dataType : "json",
 		data : JSON.stringify({
 			"name" : name,
-			"id" : 0
+			"idv" : 0
 		}),
 		success : function(data, textStatus, jqXHR) {
 			afficheUser(data);
