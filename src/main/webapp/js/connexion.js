@@ -9,7 +9,8 @@ function connect(login, password){
 			"mdp" : password
 		}),
 		success : function(data, textStatus, jqXHR) {
-			afficheUser(data)
+			console.log(data);
+			$("#reponse").html(data.idv + " : " + data.name);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);

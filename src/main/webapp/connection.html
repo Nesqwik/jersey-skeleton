@@ -4,8 +4,8 @@
 		<title>Mediashare</title>
 		<meta charset='utf-8'>
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/jquery-migrate-1.2.1.min.js"></script>
 		
 		<!-- bootstrap -->
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
@@ -13,7 +13,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		
 		<!-- Code local -->
-		<script src="all.js"></script>
+		<script src="js/connexion.js"></script>
 	</head>
 	<body>
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -28,13 +28,13 @@
 				<center>
 					<div class="btn-group" role="group">
 
-						<span class="title"><h1> Connection </h1></span> <br/>
+						<span class="title"><h1> Connexion </h1></span> <br/>
 						<br>Login :</br>
-						<INPUT type="text" SIZE="20" name=login value="">
+						<INPUT type="text" SIZE="20" id=login name=login value="">
 						<br></br>
 		
 						<br>Mot de passe :</br>
-						<INPUT type="text" SIZE="20" name=password value="">
+						<INPUT type="text" SIZE="20" id=password name=password value="">
 						<br></br>
 
 						<center><button id="valider" class="btn btn-primary">Valider</button></center>
@@ -44,7 +44,7 @@
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#valider").click(function() {connect($('#login').val(), $('#password').val())});
+				$("#valider").click(function() {connect($("#login").val(), $("#password").val())});
 			});
   		</script>
 	</body>
