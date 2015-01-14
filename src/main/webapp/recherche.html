@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<title>Mediashare - Recherche</title>
-<meta charset='utf-8'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<!-- Code local -->
-<script src="js/recherche.js"></script>
-<link rel="stylesheet" href="styles/general.css">
-</head>
-<body>
-	<div class="collapse navbar-collapse" id="navbar-collapse-1">
-		<ul class="nav navbar-nav">
-			<li><a href="index.html"> <img src="banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
-			<li class="active"><p class="navbar-text"><a href="index.html">Accueil</a></p></li>
-			<li><p class="navbar-text"><a href="upload.html">Upload</a></p></li>
-			<li><p class="navbar-text"><a href="profileViewer.html">profile viewer</a></p></li>
-		</ul>
-	</div>
-	<center>
-		<h1>
-			<b>Recherche</b>
-		</h1>
-		<div class="container">
-			<div class="row">
-				<div class="btn-group" role="group">
-					<form method="get" name="formulaireRecherche" action="">
-						<br>Mot(s) clé(s) : <INPUT type="text" SIZE="20"
-							name="recherche" id="recherche"> <INPUT TYPE="button"
-							name="recherche" value="Valider" id="valider"> </br>
-					</form>
+	<head>
+		<title>Mediashare - Recherche</title>
+		<meta charset='utf-8'>
+		
+		<!-- jQuery -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap.min.css">
+		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Code local -->
+		<script src="js/recherche.js"></script>
+		<link rel="stylesheet" href="styles/general.css">
+	</head>
+	<body>
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="index.html"> <img src="banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
+				<li class="active"><p class="navbar-text"><a href="index.html">Accueil</a></p></li>
+				<li><p class="navbar-text"><a href="upload.html">Upload</a></p></li>
+				<li><p class="navbar-text"><a href="profileViewer.html">profile viewer</a></p></li>
+			</ul>
+		</div>
+		<center>
+			<h1>
+				<b>Recherche</b>
+			</h1>
+			<div class="container">
+				<div class="row">
+					<div class="btn-group" role="group">
+						<form method="get" name="formulaireRecherche" action="">
+							<br>Mot(s) clé(s) : <INPUT type="text" SIZE="20"
+								name="recherche" id="recherche"> <INPUT TYPE="button"
+								name="recherche" value="Valider" id="valider"> </br>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="reponse"></div>
-	</center>
-	<script type="text/javascript">
-			$(document).ready(function() {
-				$("#valider").click(function () {getResultat($('#recherche').val())});
-			});
-  		</script>
-</body>
+			<div id="reponse"></div>
+		</center>
+		<script type="text/javascript">
+				$(document).ready(function() {
+					$("#valider").click(function () {getResultat($('#recherche').val())});
+				});
+	  	</script>
+	</body>
 </html>
