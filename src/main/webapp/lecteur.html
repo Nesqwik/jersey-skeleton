@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 	<head>
-		<title>Mediashare - Connexion</title>
+		<title>Mediashare - lecteur</title>
 		<meta charset='utf-8'>
-		<!-- jQuery -->
-		<script src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/jquery-migrate-1.2.1.min.js"></script>
-		
-		<!-- bootstrap -->
+		<script language="javascript">
+			function PopupCentrer(page,largeur,hauteur,options){
+				var top=(screen.height-hauteur)/2;
+				var left=(screen.width-largeur)/2;
+				window.open(page,"","top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+			}
+		</script>
+		<meta http-equiv="Content-Language" content="fr-fr">
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
-		<script src="js/bootstrap.min.js"></script>
-		
-		<!-- Code local -->
-		<script src="js/connexion.js"></script>
 		<link rel="stylesheet" href="styles/inscription.css">
 	</head>
 	<body>
@@ -29,32 +27,10 @@
 				<li><p class="navbar-text"><a href="lecteur.html">Profil</a></p></li>
 			</ul>
 		</div>
-		<div class="container">
-			<div class="row">
-			<center>
-				<div class="btn-group" role="group">
-
-					<span class="title"><h1> Connexion </h1></span> <br/>
-					<br>Login :</br>
-					<INPUT type="text" SIZE="20" name=login value="">
-					<br></br>
-	
-					<br>Mot de passe :</br>
-					<INPUT type="text" SIZE="20" name=password value="">
-					<br></br>
-
-					<br></br>
-
-					<button id="valider" class="btn btn-primary">Valider</button>
-					</form>
-				</div>
-				</center>
-			</div>	
-		</div>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#valider").click(function() {connect($('#login').val(), $('#password').val())});
-			});
-  		</script>
+		<center>
+		<a href="javascript:PopupCentrer('lecteur_popup.html',2*screen.width/3,2*screen.height/3,'menubar=no,scrollbars=no,statusbar=no')">
+			 Cliquer ici pour accèder au lecteur popup
+		</a>
+		</center>                         
 	</body>
-</html>
+</html> 
