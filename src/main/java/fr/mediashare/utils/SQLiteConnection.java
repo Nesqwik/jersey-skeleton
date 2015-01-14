@@ -6,16 +6,17 @@ import java.sql.SQLException;
 
 public class SQLiteConnection {
 	private static Connection c;
-	
+
 	private SQLiteConnection() {}
-	
-	
+
+
 	public static Connection getConnection() {
 		if(c == null)
 			connect();
+
 		return c;
 	}
-	
+
 	private static void connect() {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -30,7 +31,7 @@ public class SQLiteConnection {
 		}
 		System.out.println("Connexion etablie avec la base de donnee !");
 	}
-	
+
 	public static void close() {
 		try {
 			c.close();

@@ -1,14 +1,8 @@
 package fr.mediashare;
 
-import java.awt.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.*;
-
 
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -18,14 +12,7 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
 
-import uk.co.caprica.vlcj.player.MediaDetails;
-import uk.co.caprica.vlcj.player.MediaPlayer;
-import uk.co.caprica.vlcj.player.TrackDescription;
-
-
-
 public class MetaData {
-	
 	public static void choixLecteur(File f) throws IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
 		String[] tab=f.getAbsolutePath().split("\\.");
 		System.out.println(f.getAbsolutePath());

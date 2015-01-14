@@ -17,12 +17,12 @@ public class Requests {
 		this.c = c;
 	}
 
-	public void insertUser(String mail, String pseudo, String mdp, int userType) {
+	public void insertUser(String email, String pseudo, String mdp, int userType) {
 		PreparedStatement stmt = null;
 		try {
 			String sql = "INSERT INTO utilisateur VALUES(?, ?, ?, ?)";
 			stmt = c.prepareStatement(sql);
-			stmt.setString(1, mail);
+			stmt.setString(1, email);
 			stmt.setString(2, pseudo);
 			stmt.setString(3, mdp);
 			stmt.setInt(4, userType);
@@ -116,7 +116,7 @@ public class Requests {
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
+			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
 			while (rs.next())
 				tmp.add(rs.getString(champ));
 		} catch (Exception e) {
