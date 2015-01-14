@@ -39,6 +39,7 @@ public class UploadServlet extends HttpServlet {
          
         // creates the save directory if it does not exists
         File fileSaveDir = new File(savePath);
+        
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
