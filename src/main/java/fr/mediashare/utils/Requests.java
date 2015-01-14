@@ -87,13 +87,36 @@ public class Requests {
 		return false;
 	}
 	
-	public boolean checkConnection(String table, String champ, User user) {
+	public boolean checkLogin(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT "+champ+" FROM "+table+" WHERE pseudo='"+user.getPseudo()+"'");
+			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
+			if(rs.next())
+				tmp = true;
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	return tmp;
+	}
+	
+	public boolean checkPassword(User user) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
 			if(rs.next()) {
 				if(rs.getString("mdp").equals(user.getMdp()))
 					tmp = true;
@@ -105,7 +128,6 @@ public class Requests {
 			try {
 				rs.close();
 				stmt.close();
-				c.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
