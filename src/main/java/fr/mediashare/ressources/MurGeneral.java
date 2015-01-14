@@ -18,7 +18,7 @@ public class MurGeneral {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		
-		r.select("poste", "*");
+		r.select("post", "*");
 		SQLiteConnection.close();
 	}
 }

@@ -83,11 +83,5 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.8.6</version>
 		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-multipart</artifactId>
-			<version>1.18.3</version>
-		</dependency>
-
 	</dependencies>
 </project>

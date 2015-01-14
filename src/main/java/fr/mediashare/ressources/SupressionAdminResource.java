@@ -12,20 +12,21 @@ import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/connect")
+@Path("/deleteAdmin")
 @Produces(MediaType.APPLICATION_JSON)
-public class ConnexionResource {
+public class SupressionAdminResource {
 	@POST 
 	public FeedBack connect(User user) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		
-		if(user.getMdp().equals(r.checkConnection("utilisateur","mdp",user)))
-			return new FeedBack(true, "Mot de passe incorrect");
-		if(user.getPseudo().equals(r.checkConnection("utilisateur","pseudo",user)))
-			return new FeedBack(true, "Login incorrect");
-		
-		SQLiteConnection.close();
-		return new FeedBack(true, "Login réussi");
+
+		if(r.deleteUser(user)){
+			SQLiteConnection.close();
+			return new FeedBack(true, "Utilisateur supprimé");
+		}
+		else{ 
+			SQLiteConnection.close();
+			return new FeedBack(true, "Pseudo inconnu");
+		}
 	}
 }
