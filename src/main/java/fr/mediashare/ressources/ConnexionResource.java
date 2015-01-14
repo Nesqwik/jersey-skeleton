@@ -1,5 +1,7 @@
 package fr.mediashare.ressources;
 
+import java.sql.Connection;
+
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -7,24 +9,24 @@ import javax.ws.rs.core.MediaType;
 
 import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.User;
+import fr.mediashare.utils.Requests;
+import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/connexion")
+@Path("/connect")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
 
 	@POST 
-	public FeedBack getLogin(User user) {
-		if(user.getPseudo().equals("toto")) {
-			return new FeedBack(true, "ok");
-		}
-		return new FeedBack(true, "pas ok");
-	}
-	
-	@POST
-	public FeedBack getPassword(User user) {
-		if(user.getPseudo().equals("toto")) {
-			return new FeedBack(true, "ok");
-		}
-		return new FeedBack(true, "pas ok");
+	public FeedBack connect(User user) {
+		Connection c = SQLiteConnection.getConnection();
+		Requests r = new Requests(c);
+		
+		if(user.getMdp().equals(r.checkConnection("mdp", "utilisateur",user)))
+			return new FeedBack(true, "Mot de passe incorrect");
+		if(user.getPseudo().equals(r.checkConnection("pseudo","utilisateur",user)))
+			return new FeedBack(true, "Login incorrect");
+		
+		SQLiteConnection.close();
+		return new FeedBack(true, "Login réussi");
 	}
 }

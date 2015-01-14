@@ -2,18 +2,14 @@ function connect(login, password){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
-		url : "v1/connexion/",
+		url : "v1/connect/",
 		dataType : "json",
 		data : JSON.stringify({
-			"login" : login,
-			"password" : password
+			"pseudo" : login,
+			"mdp" : password
 		}),
 		success : function(data, textStatus, jqXHR) {
-			console.log(data)
-			if(data.success)
-				$("#reponse").html('ok');
-			else
-				$("#reponse").html('pas ok');
+			afficheUser(data)
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
