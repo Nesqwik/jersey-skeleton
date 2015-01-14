@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
 
 
@@ -16,6 +17,7 @@ public class App extends Application{
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	//s.add(UserResource.class);
     	s.add(InscriptionResource.class);
+    	s.add(ConnexionResource.class);
     	return s;
     }
 }
