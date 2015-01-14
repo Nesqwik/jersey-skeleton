@@ -119,7 +119,7 @@ public class Requests {
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
+			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
 			while (rs.next())
 				tmp.add(rs.getString(champ));
 		} catch (Exception e) {
