@@ -21,9 +21,9 @@ public class ConnexionResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		
-		if(user.getMdp().equals(r.checkConnection("mdp", "utilisateur",user)))
+		if(user.getMdp().equals(r.checkConnection("utilisateur","mdp",user)))
 			return new FeedBack(true, "Mot de passe incorrect");
-		if(user.getPseudo().equals(r.checkConnection("pseudo","utilisateur",user)))
+		if(user.getPseudo().equals(r.checkConnection("utilisateur","pseudo",user)))
 			return new FeedBack(true, "Login incorrect");
 		
 		SQLiteConnection.close();
