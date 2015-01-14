@@ -12,7 +12,6 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
 
-
 public class MetaData {
 	public static void choixLecteur(File f) throws IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
 		String[] tab=f.getAbsolutePath().split("\\.");
