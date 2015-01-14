@@ -1,7 +1,11 @@
 package fr.iutinfo;
 
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
+
+import javax.validation.constraints.AssertTrue;
 
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
@@ -10,7 +14,7 @@ import org.junit.Test;
 public class ConnexionTest extends JerseyTest {
 	
 	@Test
-	public void test() throws IOException {
-		
+	public void test() {
+		assertTrue(true);
 	}
 }
