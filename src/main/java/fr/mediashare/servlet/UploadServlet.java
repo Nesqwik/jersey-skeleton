@@ -51,7 +51,7 @@ public class UploadServlet extends HttpServlet {
          
         for (Part part : request.getParts()) {
             String fileName = extractFileName(part);
-            part.write(savePath + File.separator + fileName);
+            part.write(savePath + File.separator + "toto.ong");
         }
  
         request.setAttribute("message", "Upload has been done successfully!");
