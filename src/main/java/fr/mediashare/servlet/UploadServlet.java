@@ -26,7 +26,7 @@ public class UploadServlet extends HttpServlet {
      * Name of the directory where uploaded files will be saved, relative to
      * the web application directory.
      */
-    private static final String SAVE_DIR = "/uploadFiles";
+    private static final String SAVE_DIR = "files";
      
     /**
      * handles file upload
@@ -34,18 +34,24 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
           
     	HttpServletResponse response) throws ServletException, IOException {
+    	
+    	
+    	// gets absolute path of the web application
+        String appPath = request.getServletContext().getRealPath("");
+        
         // constructs path of the directory to save uploaded file
-        String savePath = SAVE_DIR;
+        String savePath = appPath + File.separator + SAVE_DIR;
          
         // creates the save directory if it does not exists
         File fileSaveDir = new File(savePath);
+        
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
          
         for (Part part : request.getParts()) {
             String fileName = extractFileName(part);
-            part.write(savePath + File.separator + fileName);
+            part.write(savePath + File.separator + "titi.txt");
         }
  
         request.setAttribute("message", "Upload has been done successfully!");
