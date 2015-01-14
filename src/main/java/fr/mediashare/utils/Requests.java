@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.mediashare.model.User;
+
 public class Requests {
 	private Connection c;
 	
@@ -83,5 +85,82 @@ public class Requests {
 			}
 		}
 		return false;
+	}
+	
+	public boolean checkConnection(String table, String champ, User user) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT "+champ+" FROM "+table+" WHERE pseudo='"+user.getPseudo()+"'");
+			if(rs.next()) {
+				if(rs.getString("mdp").equals(user.getMdp()))
+					tmp = true;
+			}
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	return tmp;
+	}
+	
+	public List<String> search(String table, String champ, String recherche) {
+		List<String> tmp = new LinkedList<String>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
+			while (rs.next())
+				tmp.add(rs.getString(champ));
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tmp;
+	}
+
+	public boolean supprimerAdmin(User user) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			System.out.println(user.getPseudo());
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
+			if(rs.next()) {
+				tmp = true;
+				rs = stmt.executeQuery("DELETE * from utilisateur where pseudo='" + user.getPseudo()+"'");
+			}
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	return tmp;
 	}
 }

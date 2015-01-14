@@ -76,8 +76,7 @@
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.8.6</version>
-		</dependency>
-		
+		</dependency>		
 		<!-- Activer les logs -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -91,6 +90,5 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-
 	</dependencies>
 </project>
