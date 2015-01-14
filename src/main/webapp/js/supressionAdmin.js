@@ -8,7 +8,7 @@ function deleteUser(login){
 			"pseudo" : login,
 		}),
 		success : function(data, textStatus, jqXHR) {
-			afficheUser(data)
+			console.log(data)
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);

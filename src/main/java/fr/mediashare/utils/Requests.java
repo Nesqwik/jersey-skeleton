@@ -142,8 +142,9 @@ public class Requests {
 		ResultSet rs = null;
 		boolean tmp = false;
 		try {
+			System.out.println(user.getPseudo());
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
+			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
 			if(rs.next()) {
 				tmp = true;
 				rs = stmt.executeQuery("DELETE * from utilisateur where pseudo='" + user.getPseudo()+"'");
