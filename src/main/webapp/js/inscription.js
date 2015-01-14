@@ -19,6 +19,9 @@ function register(pseudo, email, mdp, mdp2){
 					$("#reponse").html(data.message);
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
 				alert('erreur');
 			}
 		});

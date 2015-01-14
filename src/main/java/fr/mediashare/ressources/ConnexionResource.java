@@ -15,7 +15,6 @@ import fr.mediashare.utils.SQLiteConnection;
 @Path("/connect")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
-
 	@POST 
 	public FeedBack connect(User user) {
 		Connection c = SQLiteConnection.getConnection();

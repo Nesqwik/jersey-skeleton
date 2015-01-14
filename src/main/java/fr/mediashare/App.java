@@ -8,10 +8,13 @@ import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 
+
 import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
+import fr.mediashare.ressources.MurGeneral;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SupressionAdminResource;
+import fr.mediashare.ressources.UploadResource;
 
 
 
@@ -23,6 +26,9 @@ public class App extends Application{
     	s.add(InscriptionResource.class);
     	s.add(LoggingFilter.class);
 
+    	s.add(InscriptionResource.class);
+    	s.add(ConnexionResource.class);
+    	s.add(MurGeneral.class);
     	s.add(RechercheResource.class);
     	s.add(ConnexionResource.class);
     	s.add(SupressionAdminResource.class);
