@@ -1,5 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
+<<<<<<< HEAD
+<head>
+<title>Mediashare - Recherche</title>
+<meta charset='utf-8'>
+<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- Code local -->
+<script src="js/recherche.js"></script>
+</head>
+<body>
+	<center>
+		<h1>
+			<b>Recherche</b>
+		</h1>
+		<div class="container">
+			<div class="row">
+				<div class="btn-group" role="group">
+					
+						<br>Mot(s) clé(s) : <INPUT type="text" SIZE="20"
+							name="recherche" id="recherche"> <button id="valider" class="btn btn-primary">Valider</button> </br>
 	<head>
 		<title>Mediashare - Recherche</title>
 		<meta charset='utf-8'>
@@ -44,12 +65,13 @@
 					</div>
 				</div>
 			</div>
-			<div id="reponse"></div>
-		</center>
-		<script type="text/javascript">
-				$(document).ready(function() {
-					$("#valider").click(function () {getResultat($('#recherche').val())});
-				});
-	  	</script>
-	</body>
+		</div>
+		<div id="reponse"></div>
+	</center>
+	<script type="text/javascript">
+			$(document).ready(function() {
+				$("#valider").click(function () {getResultat($('#recherche').val())});
+			});
+  		</script>
+</body>
 </html>

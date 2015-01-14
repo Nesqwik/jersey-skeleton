@@ -1,22 +1,17 @@
-function getResultat(keywords) {
+function deleteUser(login){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
-		url : "v1/recherche/",
+		url : "v1/deleteAdmin/",
 		dataType : "json",
 		data : JSON.stringify({
-			"keywords" : keywords,
+			"pseudo" : login,
 		}),
 		success : function(data, textStatus, jqXHR) {
-			console.log(data)
-			if(data.success)
-				$("#reponse").html('ok');
-			else
-				$("#reponse").html('pas ok');
+			afficheUser(data)
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
 		}
 	});
 }
-
