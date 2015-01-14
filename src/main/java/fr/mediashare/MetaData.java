@@ -1,10 +1,9 @@
 package fr.mediashare;
 
+import java.awt.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
@@ -18,6 +17,10 @@ import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
+
+import uk.co.caprica.vlcj.player.MediaDetails;
+import uk.co.caprica.vlcj.player.MediaPlayer;
+import uk.co.caprica.vlcj.player.TrackDescription;
 
 
 
@@ -42,6 +45,11 @@ public class MetaData {
 		image.add("gif");
 		image.add("png");
 		
+		ArrayList<String> video = new ArrayList<>();
+		video.add("3gp");
+		video.add("mp4");
+		video.add("avi");
+		
 		if(audio.contains(tab[tab.length-1]))
 			lireMetaAudio(f);
 		
@@ -52,7 +60,10 @@ public class MetaData {
 			System.out.println("todo");
 		
 		else if(tab[tab.length-1].equals("txt"))
-			LireMetaTxt(f);
+			lireMetaTxt(f);
+		
+		else if(video.contains(tab[tab.length-1]))
+			System.out.println("redirection");
 	}
 	
 	public static ArrayList<String> lireMetaAudio(File f) throws  IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
@@ -95,23 +106,21 @@ public class MetaData {
 	
 	
 	
-	public static  long  LireMetaTxt(File f){
+	public static  long  lireMetaTxt(File f){
 		return f.length();
 		
 	}
 	
-	public static ArrayList<String> LireMetaVideo(File f){
-		return null;
-	}
 	
 	public static void main(String[] args) throws IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
 		MetaData test = new MetaData();
 		
-		test.lireMetaAudio(new File("/tmp/bulteela/workspace/00000.mp3"));
+		test.lireMetaAudio(new File("/tmp/bulteela/workspace/mediashare/00014.mp3"));
 		
 		
 		test.choixLecteur(new File("/home/infoetu/bulteela/Téléchargements/travail.jpg"));
 		test.choixLecteur(new File("/home/infoetu/bulteela/group.txt"));
+		test.choixLecteur(new File("/home/infoetu/bulteela/Téléchargements/azert.3gp"));
 	}
 
 }
