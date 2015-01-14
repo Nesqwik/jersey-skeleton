@@ -21,11 +21,9 @@ public class SupressionAdminResource {
 		Requests r = new Requests(c);
 
 		if(r.supprimerAdmin(user)){
-			SQLiteConnection.close();
 			return new FeedBack(true, "Utilisateur supprimé");
 		}
 		else{ 
-			SQLiteConnection.close();
 			return new FeedBack(true, "Pseudo inconnu");
 		}
 	}

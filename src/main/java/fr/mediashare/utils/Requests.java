@@ -55,7 +55,6 @@ public class Requests {
 			try {
 				rs.close();
 				stmt.close();
-				c.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -79,7 +78,6 @@ public class Requests {
 			try {
 				rs.close();
 				stmt.close();
-				c.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -141,7 +139,7 @@ public class Requests {
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
+			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
 			while (rs.next())
 				tmp.add(rs.getString(champ));
 		} catch (Exception e) {
@@ -151,7 +149,6 @@ public class Requests {
 			try {
 				rs.close();
 				stmt.close();
-				c.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -164,12 +161,11 @@ public class Requests {
 		ResultSet rs = null;
 		boolean tmp = false;
 		try {
-			System.out.println(user.getPseudo());
 			stmt = c.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
 			if(rs.next()) {
 				tmp = true;
-				rs = stmt.executeQuery("DELETE * from utilisateur where pseudo='" + user.getPseudo()+"'");
+				stmt.executeUpdate("DELETE FROM utilisateur WHERE pseudo='" + user.getPseudo()+"'");
 			}
 		} catch(Exception e) {
 		e.printStackTrace();
@@ -178,7 +174,6 @@ public class Requests {
 			try {
 				rs.close();
 				stmt.close();
-				c.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
