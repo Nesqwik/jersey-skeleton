@@ -8,7 +8,9 @@ import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
+import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
+import fr.mediashare.ressources.MurGeneral;
 import fr.mediashare.ressources.UploadResource;
 
 
@@ -20,6 +22,8 @@ public class App extends Application{
     	s.add(UploadResource.class);
     	s.add(MultiPartFeature.class);
     	s.add(InscriptionResource.class);
+    	s.add(ConnexionResource.class);
+    	s.add(MurGeneral.class);
     	return s;
     }
 }

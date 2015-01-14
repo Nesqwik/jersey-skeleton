@@ -11,17 +11,8 @@ public class SQLiteConnection {
 
 
 	public static Connection getConnection() {
-		try {
-
-			if(c == null)
-				connect();
-
-			if(c.isClosed())
-				connect();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		if(c == null)
+			connect();
 
 		return c;
 	}

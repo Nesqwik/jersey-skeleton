@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Mediashare - index</title>
+		<title>Mediashare</title>
 		<meta charset='utf-8'>
 		<!-- jQuery -->
 		<script src="js/jquery-1.11.2.min.js"></script>
@@ -18,18 +18,14 @@
 				<li><a href="index.html"> <img src="banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
 				<li><p class="navbar-text"><a href="recherche.html">Recherche</a></p></li>
 				<li><p class="navbar-text"><a href="upload.html">Upload</a></p></li>
-				<li><p class="navbar-text"><a href="profileViewer.html">Profile viewer</a></p></li>
+				<li><p class="navbar-text"><a href="profileViewer.html">Profil</a></p></li>
 			</ul>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="btn-group" role="group">
-				<center>
-					<INPUT TYPE="button" Value="Inscription" name="inscription" onclick="window.location='inscription.html';">
-					<INPUT TYPE="button" Value="Connexion" name="connexion" onclick="window.location='connexion.html';">
-				</center>
-				</div>
-			</div>	
-		</div>
+		</div> <br />
+		<center><button id="rechargement" class="btn btn-primary">Recharger</button></center>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#rechargement").click(function () {reload()});
+			});
+  		</script>
 	</body>
 </html>

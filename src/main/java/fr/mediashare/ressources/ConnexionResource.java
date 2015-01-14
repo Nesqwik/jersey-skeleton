@@ -12,7 +12,7 @@ import fr.mediashare.model.User;
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
 
-	@POST 
+/*	@POST 
 	public FeedBack getLogin(User user) {
 		if(user.getPseudo().equals("toto")) {
 			return new FeedBack(true, "ok");
@@ -26,5 +26,5 @@ public class ConnexionResource {
 			return new FeedBack(true, "ok");
 		}
 		return new FeedBack(true, "pas ok");
-	}
+	} */
 }

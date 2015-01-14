@@ -15,12 +15,12 @@ public class Requests {
 		this.c = c;
 	}
 
-	public void insertUser(String mail, String pseudo, String mdp, int userType) {
+	public void insertUser(String email, String pseudo, String mdp, int userType) {
 		PreparedStatement stmt = null;
 		try {
 			String sql = "INSERT INTO utilisateur VALUES(?, ?, ?, ?)";
 			stmt = c.prepareStatement(sql);
-			stmt.setString(1, mail);
+			stmt.setString(1, email);
 			stmt.setString(2, pseudo);
 			stmt.setString(3, mdp);
 			stmt.setInt(4, userType);
