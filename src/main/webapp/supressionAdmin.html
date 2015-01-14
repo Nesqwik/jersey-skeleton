@@ -35,18 +35,20 @@
 
 					<span class="title"><h1> Supression </h1></span> <br/>
 				 	Compte à supprimer :
-					<INPUT type="text" SIZE="20" name=login value="">
+					<INPUT type="text" SIZE="20" id=login name=login value="">
 				</div>
 				</center>
 				<br/><br/>
 				<center>
 					<button id="valider" class="btn btn-primary">Valider</button>
 				</center>
+			</div>
+			<div id="reponse">
 			</div>	
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#valider").click(function() {deleteUser($('#login').val())});
+				$("#valider").click(function() {deleteUser($("#login").val())});
 			});
   		</script>
 	</body>
