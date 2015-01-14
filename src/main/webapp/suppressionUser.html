@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Mediashare - Supression (Administarateur)</title>
+		<title>Mediashare - Supression de compte</title>
 		<meta charset='utf-8'>
 		<!-- jQuery -->
 		<script src="js/jquery-1.11.2.min.js"></script>
@@ -13,7 +13,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		
 		<!-- Code local -->
-		<script src="js/supressionAdmin.js"></script>
+		<script src="js/supressionUser.js"></script>
 		<link rel="stylesheet" href="styles/inscription.css">
 	</head>
 	<body>
@@ -32,22 +32,23 @@
 			<div class="row">
 			<center>
 				<div class="btn-group" role="group">
+
 					<span class="title"><h1> Supression </h1></span> <br/>
-				 	Compte à supprimer :
-					<INPUT type="text" SIZE="20" id=login name=login value="">
+					<br> Entrez votre pseudo :
+					<INPUT type="text" SIZE="20" id=login name=login value=""></br>
+				 	<br>Êtes-vous sûr de vouloir supprimer définitivement votre compte ?</br>
+					<button id="oui" class="btn btn-primary">Oui</button>
+					<button id="non" class="btn btn-primary">Non</button>
 				</div>
 				</center>
 				<br/><br/>
 				<center>
-					<button id="valider" class="btn btn-primary">Valider</button>
 				</center>
-			</div>
-			<div id="reponse">
 			</div>	
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#valider").click(function() {deleteUser($("#login").val())});
+				$("#oui").click(function() {deleteUser($("#login").val())});
 			});
   		</script>
 	</body>
