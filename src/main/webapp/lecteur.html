@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 	<head>
-		<title>Mediashare - index</title>
+		<title>Mediashare - lecteur</title>
 		<meta charset='utf-8'>
+		<script language="javascript">
+			function PopupCentrer(page,largeur,hauteur,options){
+				var top=(screen.height-hauteur)/2;
+				var left=(screen.width-largeur)/2;
+				window.open(page,"","top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+			}
+		</script>
+		<meta http-equiv="Content-Language" content="fr-fr">
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
-		
-		<!-- jQuery -->
-		<script src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/jquery-migrate-1.2.1.min.js"></script>
+		<link rel="stylesheet" href="styles/inscription.css">
 	</head>
 	<body>
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -23,11 +27,10 @@
 				<li><p class="navbar-text"><a href="lecteur.html">Profil</a></p></li>
 			</ul>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="btn-group" role="group">
-				</div>
-			</div>	
-		</div>
+		<center>
+		<a href="javascript:PopupCentrer('lecteur_popup.html',2*screen.width/3,2*screen.height/3,'menubar=no,scrollbars=no,statusbar=no')">
+			 Cliquer ici pour accèder au lecteur popup
+		</a>
+		</center>                         
 	</body>
-</html>
+</html> 
