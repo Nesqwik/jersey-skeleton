@@ -12,7 +12,7 @@ import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/connect")
+@Path("/deleteAdmin")
 @Produces(MediaType.APPLICATION_JSON)
 public class SupressionAdminResource {
 	@POST 
@@ -20,7 +20,7 @@ public class SupressionAdminResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 
-		if(r.checkUser(user)){
+		if(r.deleteUser(user)){
 			SQLiteConnection.close();
 			return new FeedBack(true, "Utilisateur supprimé");
 		}

@@ -136,4 +136,30 @@ public class Requests {
 		}
 		return tmp;
 	}
+
+	public boolean deleteUser(User user) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
+			if(rs.next()) {
+				tmp = true;
+				rs = stmt.executeQuery("DELETE * from utilisateur where pseudo='" + user.getPseudo()+"'");
+			}
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	return tmp;
+	}
 }

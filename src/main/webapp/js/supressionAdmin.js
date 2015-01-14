@@ -1,4 +1,4 @@
-function connect(login){
+function deleteUser(login){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
