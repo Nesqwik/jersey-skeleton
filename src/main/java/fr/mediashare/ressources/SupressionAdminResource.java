@@ -20,7 +20,7 @@ public class SupressionAdminResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 
-		if(r.deleteUser(user)){
+		if(r.supprimerAdmin(user)){
 			SQLiteConnection.close();
 			return new FeedBack(true, "Utilisateur supprimé");
 		}

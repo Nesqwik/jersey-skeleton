@@ -137,7 +137,7 @@ public class Requests {
 		return tmp;
 	}
 
-	public boolean deleteUser(User user) {
+	public boolean supprimerAdmin(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
