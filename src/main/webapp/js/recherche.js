@@ -1,11 +1,11 @@
-function getResultat(recherche) {
+function getResultat(keywords) {
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
 		url : "v1/recherche/",
 		dataType : "json",
 		data : JSON.stringify({
-			"recherche" : recherche,
+			"keywords" : keywords,
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)

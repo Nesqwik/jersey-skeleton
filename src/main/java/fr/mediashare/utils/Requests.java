@@ -112,4 +112,28 @@ public class Requests {
 		}
 	return tmp;
 	}
+	
+	public List<String> search(String table, String champ, String recherche) {
+		List<String> tmp = new LinkedList<String>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
+			while (rs.next())
+				tmp.add(rs.getString(champ));
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tmp;
+	}
 }
