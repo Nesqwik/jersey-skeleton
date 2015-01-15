@@ -1,6 +1,7 @@
 package fr.mediashare.ressources;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.POST;
@@ -19,6 +20,9 @@ public class RechercheResource {
 
 	@POST
 	public List<ResultatRecherche> Search(Recherche recherche) {
+		if(recherche.getKeywords().equals("")){
+			return new ArrayList<ResultatRecherche>();
+		}
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		return r.search("fichier", "nom", recherche.getKeywords());
