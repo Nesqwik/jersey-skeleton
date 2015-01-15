@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.mediashare.model.Post;
 import fr.mediashare.model.ResultatRecherche;
 import fr.mediashare.model.User;
 
@@ -70,6 +71,36 @@ public class Requests {
 			}
 		}
 		return tmp;
+	}
+	
+	
+	
+	public List<Post> selectAllPosts() {
+		List<Post> posts = new ArrayList<Post>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM post;");
+			while (rs.next()){
+				Post p = new Post(rs.getString("description"), 
+									rs.getString("pseudo"), 
+									rs.getString("path"), 
+									FileFormatUtils.getFormatOf(rs.getString("path")));
+				posts.add(p);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return posts;
 	}
 
 	public boolean emailExist(String email) {
@@ -223,6 +254,28 @@ public class Requests {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public User getUser(String pseudo) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.prepareStatement("select * from utilisateur where pseudo = ?;");
+			stmt.setString(1, pseudo);
+			rs = stmt.executeQuery();
+			if(rs.next())
+				return new User(rs.getString("pseudo"), rs.getString("mail"), rs.getString("mdp"), 0);
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 }

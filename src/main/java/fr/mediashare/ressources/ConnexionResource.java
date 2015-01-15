@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
+import fr.mediashare.utils.Ressources;
 import fr.mediashare.utils.SQLiteConnection;
 
 @Path("/connect")
@@ -19,6 +20,8 @@ public class ConnexionResource {
 	public static FeedBack connect(User user) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
+		User u = r.getUser(user.getPseudo());
+		Ressources.addUser(/* TODO : uniq id */ 0, u);
 		
 		if(!r.idExist(user))
 			return new FeedBack(false, "Login/mot de passe incorrect");
