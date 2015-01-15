@@ -3,16 +3,16 @@ DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS utilisateur;
 
 CREATE TABLE commentaire (
-	idCom int primary key,
+	idCom INTEGER primary key,
 	commentaire text,
-	idPost int,
+	idPost INTEGER,
 	pseudo text,
 	foreign key(pseudo) references utilisateur(pseudo),
 	foreign key(idPost) references post(idPost)
 );
 
 CREATE TABLE post (
-	idPost int primary key,
+	idPost INTEGER primary key,
 	description text,
 	path text,
 	pseudo text,
