@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +18,8 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.sun.research.ws.wadl.Request;
 
 import fr.mediashare.utils.FileFormatUtils;
 
@@ -36,7 +37,9 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
- 
+        
+        String description = request.getParameter("desciption");
+        
         if (isMultipart) {
         	// Create a factory for disk-based file items
         	FileItemFactory factory = new DiskFileItemFactory();
@@ -74,6 +77,9 @@ public class UploadServlet extends HttpServlet {
                 
                 PrintWriter out = response.getWriter();
                 response.setContentType("text/html");
+                
+                Request r = new Request();
+                
                 out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=" + folderPath + fileName + "\"></head></html>");
             } catch (FileUploadException e) {
                 e.printStackTrace();
