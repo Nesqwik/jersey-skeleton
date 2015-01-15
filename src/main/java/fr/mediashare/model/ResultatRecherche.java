@@ -2,18 +2,17 @@ package fr.mediashare.model;
 
 public class ResultatRecherche {
 
-	private String nom;
+	private String description;
 	private String chemin;
-	private String date;
-	private int taille;
+	private String pseudo;
 	private int idPost;
-	
-	public String getNom() {
-		return nom;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getChemin() {
@@ -24,20 +23,12 @@ public class ResultatRecherche {
 		this.chemin = chemin;
 	}
 
-	public String getDate() {
-		return date;
+	public String getPseudo() {
+		return pseudo;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public int getTaille() {
-		return taille;
-	}
-
-	public void setTaille(int taille) {
-		this.taille = taille;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
 	public int getIdPost() {
@@ -46,14 +37,6 @@ public class ResultatRecherche {
 
 	public void setIdPost(int idPost) {
 		this.idPost = idPost;
-	}
-
-	public String getRes() {
-		return nom;
-	}
-
-	public void setRes(String res) {
-		this.nom = res;
 	}
 
 	public ResultatRecherche(){

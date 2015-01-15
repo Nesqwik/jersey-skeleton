@@ -1,4 +1,4 @@
-function getResultat(keywords) {
+function getResultat(keywords, type) {
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -6,6 +6,7 @@ function getResultat(keywords) {
 		dataType : "json",
 		data : JSON.stringify({
 			"keywords" : keywords,
+			"type" : type,
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)
@@ -22,7 +23,7 @@ function afficheListFiles(data){
 	var index = 0;
 	if(data.length!=0){
 		for (index = 0; index < data.length; ++index) {
-			html = html + "<li>" + data[index].nom + "</li>";
+			html = html + "<li>" + data[index].description + "</li>";
 		}
 		html = html + "</ul>";
 		$("#reponse").html(html);

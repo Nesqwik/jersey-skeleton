@@ -143,10 +143,9 @@ public class Requests {
 			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE '%"+recherche+"%'");
 			while(rs.next()){
 				ResultatRecherche res = new ResultatRecherche();
-				res.setNom(rs.getString("nom"));
-				res.setChemin(rs.getString("chemin"));
-				res.setDate(rs.getString("date"));
-				res.setTaille(rs.getInt("taille"));
+				res.setDescription(rs.getString("description"));
+				res.setChemin(rs.getString("path"));
+				res.setPseudo(rs.getString("pseudo"));
 				res.setIdPost(rs.getInt("idPost"));
 				list.add(res);
 			}
