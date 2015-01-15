@@ -9,6 +9,7 @@ function deleteUser(login){
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)
+			$("#reponse").html(data.message);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);

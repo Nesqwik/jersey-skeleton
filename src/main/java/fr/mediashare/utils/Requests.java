@@ -5,14 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.mediashare.model.ResultatRecherche;
 import fr.mediashare.model.User;
 
 public class Requests {
 	private Connection c;
-	
+
 	public Requests(Connection c) {
 		this.c = c;
 	}
@@ -68,7 +70,7 @@ public class Requests {
 		try {
 			stmt = c.prepareStatement("SELECT mail from utilisateur where mail = ?");
 			stmt.setString(1, email);
-			
+
 			rs = stmt.executeQuery();
 			return rs.next();
 		} catch (Exception e) {
@@ -84,7 +86,7 @@ public class Requests {
 		}
 		return false;
 	}
-	
+
 	public boolean checkLogin(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -95,8 +97,8 @@ public class Requests {
 			if(rs.next())
 				tmp = true;
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
+			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				rs.close();
@@ -105,9 +107,9 @@ public class Requests {
 				e.printStackTrace();
 			}
 		}
-	return tmp;
+		return tmp;
 	}
-	
+
 	public boolean checkPassword(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -120,29 +122,6 @@ public class Requests {
 					tmp = true;
 			}
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
-		} finally {
-			try {
-				rs.close();
-				stmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	return tmp;
-	}
-	
-	public List<String> search(String table, String champ, String recherche) {
-		List<String> tmp = new LinkedList<String>();
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE %"+recherche+"%");
-			while (rs.next())
-				tmp.add(rs.getString(champ));
-		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		} finally {
@@ -154,6 +133,36 @@ public class Requests {
 			}
 		}
 		return tmp;
+	}
+
+	public List<ResultatRecherche> search(String table, String champ, String recherche) {
+		List<ResultatRecherche> list = new ArrayList<ResultatRecherche>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + champ + " LIKE '%"+recherche+"%'");
+			while(rs.next()){
+				ResultatRecherche res = new ResultatRecherche();
+				res.setNom(rs.getString("nom"));
+				res.setChemin(rs.getString("chemin"));
+				res.setDate(rs.getString("date"));
+				res.setTaille(rs.getInt("taille"));
+				res.setIdPost(rs.getInt("idPost"));
+				list.add(res);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 
 	public boolean supprimerAdmin(User user) {
@@ -168,8 +177,8 @@ public class Requests {
 				stmt.executeUpdate("DELETE FROM utilisateur WHERE pseudo='" + user.getPseudo()+"'");
 			}
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
+			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				rs.close();
@@ -178,6 +187,6 @@ public class Requests {
 				e.printStackTrace();
 			}
 		}
-	return tmp;
+		return tmp;
 	}
 }
