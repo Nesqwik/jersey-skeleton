@@ -19,9 +19,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.sun.research.ws.wadl.Request;
-
 import fr.mediashare.utils.FileFormatUtils;
+import fr.mediashare.utils.Requests;
 
 
 @WebServlet(name = "uploadServlet", urlPatterns = { "/upload" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
@@ -78,7 +77,8 @@ public class UploadServlet extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 response.setContentType("text/html");
                 
-                Request r = new Request();
+                Requests r = new Requests();
+                r.insertPost(description, folderPath + fileName, "toto");
                 
                 out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=" + folderPath + fileName + "\"></head></html>");
             } catch (FileUploadException e) {

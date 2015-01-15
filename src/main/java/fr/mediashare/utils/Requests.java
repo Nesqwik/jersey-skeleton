@@ -16,7 +16,11 @@ public class Requests {
 	private Connection c;
 
 	public Requests(Connection c) {
-		this.c = c;
+		this.c = SQLiteConnection.getConnection();
+	}
+	
+	public Requests() {
+		this.c = SQLiteConnection.getConnection();
 	}
 
 	public void insertUser(String email, String pseudo, String mdp, int userType) {
@@ -216,6 +220,27 @@ public class Requests {
 		try {
 			stmt = c.createStatement();
 			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void insertPost(String description, String path, String pseudo) {
+		PreparedStatement stmt = null;
+		try {
+			stmt = c.prepareStatement("INSERT INTO post(description, path, pseudo) VALUES(?, ?, ?)");
+			stmt.setString(1, description);
+			stmt.setString(2, path);
+			stmt.setString(3, pseudo);
+			
+			
 		} catch(Exception e) {
 		e.printStackTrace();
 		System.exit(0);
