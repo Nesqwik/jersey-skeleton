@@ -1,9 +1,28 @@
-DROP TABLE commentaire;
-DROP TABLE fichier;
-DROP TABLE post;
-DROP TABLE utilisateur;
-CREATE TABLE commentaire (idCom int primary key, commentaire text, idPoste int, mail text, foreign key(mail) references utilisateur(mail), foreign key(idPoste) references poste(idPoste));
-CREATE TABLE fichier (nom text primary key, chemin text, date text, taille int, idPoste int, foreign key(idPoste) references poste(idPoste));
-CREATE TABLE post (idPoste int primary key, description text, mail text, foreign key(mail) references utilisateur(mail));
-CREATE TABLE utilisateur (mail text primary key, pseudo text unique, mdp text, admin int);
+DROP TABLE IF EXISTS commentaire;
+DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS utilisateur;
+
+CREATE TABLE commentaire (
+	idCom int primary key,
+	commentaire text,
+	idPoste int,
+	pseudo text,
+	foreign key(pseudo) references utilisateur(pseudo),
+	foreign key(idPost) references post(idPost)
+);
+
+CREATE TABLE post (
+	idPost int primary key,
+	description text,
+	path text,
+	pseudo text,
+	foreign key(pseudo) references utilisateur(pseudo)
+);
+
+CREATE TABLE utilisateur (
+	pseudo text primary key,
+	mail text unique,
+	mdp text, 
+	admin int
+);
 

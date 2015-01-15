@@ -23,6 +23,7 @@ public class ConnexionResource {
 		
 		if(!r.checkPassword(user) || !r.checkLogin(user))
 			return new FeedBack(false, "Login/mot de passe incorrect");
-		return new FeedBack(true, "Login réussi");
+		else
+			return new FeedBack(true, user.getPseudo());
 	}
 }
