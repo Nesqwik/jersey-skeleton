@@ -14,6 +14,7 @@ public class FileFormatTest {
 		assertTrue(FileFormatUtils.isAudioFile("toto.mp3"));
 		assertTrue(FileFormatUtils.isAudioFile("toto.ogg"));
 		assertFalse(FileFormatUtils.isAudioFile("toto.toto"));
+		assertFalse(FileFormatUtils.isAudioFile("titi.mp4"));
 	}
 	
 	@Test
