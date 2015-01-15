@@ -16,12 +16,12 @@ public class InitDB {
 			daop.createTablePost();
 
 		}catch(Exception e){
-			System.out.println("tables deja creent");
+			System.out.println("Tables déjà crées !");
 		}
 		try{
 			daou.createAdminKileurf();
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 	}
 
