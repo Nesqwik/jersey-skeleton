@@ -4,8 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.sqlite.SQLiteDataSource;
+
+import fr.mediashare.App;
+
 public class SQLiteConnection {
 	private static Connection c;
+	private static SQLiteDataSource ds;
 
 	private SQLiteConnection() {}
 
@@ -19,8 +24,9 @@ public class SQLiteConnection {
 
 	private static void connect() {
 		try {
+			ds = App.ds;
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:bdd_media");
+			c = DriverManager.getConnection(ds.getUrl());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Impossible de se connecter a la base de donnee !");
