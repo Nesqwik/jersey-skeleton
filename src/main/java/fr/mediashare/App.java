@@ -50,7 +50,7 @@ public class App extends Application {
 		//System.out.println(ds.getUrl());
 		
 		dbi = new DBI(ds);
-		//InitDB.up();
+		InitDB.up(dbi);
     }
     
 }

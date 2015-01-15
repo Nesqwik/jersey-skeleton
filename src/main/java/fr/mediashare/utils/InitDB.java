@@ -1,15 +1,17 @@
 package fr.mediashare.utils;
 
-import fr.mediashare.App;
+import org.skife.jdbi.v2.DBI;
+
 import fr.mediashare.dao.CommentaireDao;
 import fr.mediashare.dao.PostDao;
 import fr.mediashare.dao.UserDao;
 
 public class InitDB {
-	private static CommentaireDao daoc = App.dbi.open(CommentaireDao.class);
-	private static UserDao daou = App.dbi.open(UserDao.class);
-	private static PostDao daop = App.dbi.open(PostDao.class);
-	public static void up(){
+
+	public static void up(DBI dbi){
+		CommentaireDao daoc = dbi.open(CommentaireDao.class);
+		UserDao daou = dbi.open(UserDao.class);
+		PostDao daop = dbi.open(PostDao.class);
 		try{
 			daou.createTableUtilisateur();
 			daoc.createTableCommentaire();
