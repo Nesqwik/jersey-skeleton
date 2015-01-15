@@ -7,6 +7,8 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.filter.LoggingFilter;
+import org.skife.jdbi.v2.DBI;
+import org.sqlite.SQLiteDataSource;
 
 
 import fr.mediashare.ressources.ConnexionResource;
@@ -30,5 +32,12 @@ public class App extends Application{
     	s.add(SupressionAdminResource.class);
     	s.add(ModifierProfilResource.class);
     	return s;
+    }
+    public static DBI dbi;
+	static {
+		SQLiteDataSource ds = new SQLiteDataSource();
+		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"media_bdd");
+		
+		dbi = new DBI(ds);
     }
 }
