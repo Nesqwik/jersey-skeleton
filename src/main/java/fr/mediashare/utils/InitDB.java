@@ -16,10 +16,11 @@ public class InitDB {
 			daou.createTableUtilisateur();
 			daoc.createTableCommentaire();
 			daop.createTablePost();
+			daou.createAdminKileurf();
+
 		} catch (Exception e) {
 			System.out.println("Tables déjà crées !");
 		}
-		daou.createAdminKileurf();
 
 	}
 
