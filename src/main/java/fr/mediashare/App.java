@@ -12,7 +12,7 @@ import org.sqlite.SQLiteDataSource;
 
 import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
-import fr.mediashare.ressources.MurGeneral;
+import fr.mediashare.ressources.MurGeneralRessource;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SuppressionUserResource;
 import fr.mediashare.ressources.SupressionAdminResource;
@@ -28,7 +28,7 @@ public class App extends Application{
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(InscriptionResource.class);
     	s.add(LoggingFilter.class);
-    	s.add(MurGeneral.class);
+    	s.add(MurGeneralRessource.class);
     	s.add(RechercheResource.class);
     	s.add(ConnexionResource.class);
     	s.add(SupressionAdminResource.class);
