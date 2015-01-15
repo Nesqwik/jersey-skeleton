@@ -8,23 +8,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.mediashare.model.FeedBack;
+import fr.mediashare.model.Post;
 import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/connect")
+@Path("/deletePost")
 @Produces(MediaType.APPLICATION_JSON)
-public class ConnexionResource {
-	@POST 
-	public static FeedBack connect(User user) {
+public class supprimerPost {
+
+	@POST
+	public FeedBack delete(User user, Post post) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		//User u = r.getUser(user.getPseudo());
-		//Ressources.addUser(/* TODO : uniq id */ 0, u);
 		
-		if(!r.idExist(user))
-			return new FeedBack(false, "Login/mot de passe incorrect");
-		else
-			return new FeedBack(true, user.getPseudo());
+		if(r.checkSuppression(user,post)) {
+			r.supprimerPost(post);
+			return new FeedBack(true,"Post supprimé");
+		}
+		
+		return new FeedBack(false,"Vous ne pouvez pas supprimer ce post");
 	}
 }

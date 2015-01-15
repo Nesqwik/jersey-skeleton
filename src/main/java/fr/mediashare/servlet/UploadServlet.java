@@ -3,6 +3,7 @@ package fr.mediashare.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,8 +38,6 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         
-        String description = request.getParameter("description");
-        
         if (isMultipart) {
         	// Create a factory for disk-based file items
         	FileItemFactory factory = new DiskFileItemFactory();
@@ -48,13 +47,11 @@ public class UploadServlet extends HttpServlet {
         	
         	String folderPath = "";
         	String fileName = "";
-        	
+        	String description = "";
             try {
             	// Parse the request
-            	List<?> items = upload.parseRequest(request);
-                Iterator<?> iterator = items.iterator();
-                while (iterator.hasNext()) {
-                    FileItem item = (FileItem) iterator.next();
+            	List<FileItem> items = upload.parseRequest(request);
+                for(FileItem item : items) {
                     if (!item.isFormField()) {
                         String name = item.getName();
                         fileName = FileFormatUtils.getUniqFileName(name);
@@ -71,6 +68,10 @@ public class UploadServlet extends HttpServlet {
                         File uploadedFile = new File(root + folderPath + fileName);
                         System.out.println(uploadedFile.getAbsolutePath());
                         item.write(uploadedFile);
+                    } else {
+                         if(item.getFieldName().equals("description")) {
+                        	 description = item.getString();
+                         }
                     }
                 }
                 
