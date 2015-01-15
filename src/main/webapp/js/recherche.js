@@ -9,14 +9,24 @@ function getResultat(keywords) {
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)
-			if(data.success)
-				$("#reponse").html('ok');
-			else
-				$("#reponse").html('pas ok');
+			afficheListFiles(data)
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
 		}
 	});
+}
+
+function afficheListFiles(data){
+	var html = '<ul>';
+	var index = 0;
+	if(data.length!=0){
+		for (index = 0; index < data.length; ++index) {
+			html = html + "<li>" + data[index].nom + "</li>";
+		}
+		html = html + "</ul>";
+		$("#reponse").html(html);
+	}
+	else $("#reponse").html("Fichier inexistant");
 }
 

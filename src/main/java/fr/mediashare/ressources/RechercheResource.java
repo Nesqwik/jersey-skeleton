@@ -9,8 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.Recherche;
+import fr.mediashare.model.ResultatRecherche;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
@@ -19,12 +19,12 @@ import fr.mediashare.utils.SQLiteConnection;
 public class RechercheResource {
 
 	@POST
-	public List Search(Recherche recherche) {
+	public List<ResultatRecherche> Search(Recherche recherche) {
+		if(recherche.getKeywords().equals("")){
+			return new ArrayList<ResultatRecherche>();
+		}
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		List list = new ArrayList<String>();
-		list = r.search("fichier", "nom", recherche.getKeywords());
-		return list;
-
+		return r.search("fichier", "nom", recherche.getKeywords());
 	}
 }
