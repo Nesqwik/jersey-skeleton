@@ -20,9 +20,7 @@ public class InitDB {
 		}
 		try{
 			daou.createAdminKileurf();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		}catch(Exception e){}
 	}
 
 }
