@@ -16,7 +16,7 @@ public class InitDB {
 			daou.createTableUtilisateur();
 			daoc.createTableCommentaire();
 			daop.createTablePost();
-			daou.createAdminKileurf();
+			//daou.createAdminKileurf();
 
 		} catch (Exception e) {
 			System.out.println("Tables déjà crées !");
