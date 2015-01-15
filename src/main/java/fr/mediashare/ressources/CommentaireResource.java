@@ -18,7 +18,7 @@ import fr.mediashare.utils.SQLiteConnection;
 @Produces(MediaType.APPLICATION_JSON)
 public class CommentaireResource {
 
-	
+	/*
 	@POST
 	public FeedBack comment(Commentaire commentaire, Post post, User user) {
 		Connection c = SQLiteConnection.getConnection();
@@ -28,4 +28,5 @@ public class CommentaireResource {
 		
 		return new FeedBack(true,"");
 	}
+	*/
 }

@@ -16,7 +16,7 @@ import fr.mediashare.utils.SQLiteConnection;
 @Path("/deletePost")
 @Produces(MediaType.APPLICATION_JSON)
 public class SupprimerPostResource {
-
+/*
 	@POST
 	public FeedBack delete(User user, Post post) {
 		Connection c = SQLiteConnection.getConnection();
@@ -29,4 +29,5 @@ public class SupprimerPostResource {
 		
 		return new FeedBack(false,"Vous ne pouvez pas supprimer ce post");
 	}
+	*/
 }

@@ -15,6 +15,7 @@ import fr.mediashare.utils.SQLiteConnection;
 @Path("/deleteAdmin")
 @Produces(MediaType.APPLICATION_JSON)
 public class SupressionAdminResource {
+	
 	@POST 
 	public FeedBack connect(User user) {
 		Connection c = SQLiteConnection.getConnection();

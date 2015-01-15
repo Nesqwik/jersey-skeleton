@@ -13,7 +13,7 @@ import fr.mediashare.utils.Requests;
 
 public class ConnexionTest {
 	
-	@Test
+	//@Test
 	public void testConnect() {
 		Requests r = new Requests();
 		User u = new User("toto@toto.fr", "toto", "toto", 0);
