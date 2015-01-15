@@ -10,10 +10,7 @@ function modifierProfil(email,mdp) {
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)
-			if(data.success)
-				$("#reponse").html('ok');
-			else
-				$("#reponse").html('pas ok');
+			$("#reponse").html(data.message);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
