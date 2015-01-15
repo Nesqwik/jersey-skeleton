@@ -1,6 +1,6 @@
 package fr.iutinfo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import javax.ws.rs.core.Application;
 
@@ -8,8 +8,6 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
 import fr.mediashare.App;
-import fr.mediashare.model.User;
-import fr.mediashare.ressources.InscriptionResource;
 
 
 public class InscriptionTest extends JerseyTest {

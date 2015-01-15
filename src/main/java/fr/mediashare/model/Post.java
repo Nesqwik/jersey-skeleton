@@ -1,16 +1,18 @@
 package fr.mediashare.model;
 
 public class Post {
-	private int idPost=0;
-	private String description, mail, pseudo;
+	private int idPost;
+	private String description, pseudo, path, type;
 	
-	public Post(){
+	public Post() {
 		
 	}
 	
-	public Post(String description, String mail){
-		this.description=description;
-		this.mail=mail;
+	public Post(String description, String pseudo, String path, String type){
+		this.description = description;
+		this.pseudo = pseudo;
+		this.path = path;
+		this.type = type;
 	}
 	
 	public int getIdPost(){
@@ -18,7 +20,7 @@ public class Post {
 	}
 	
 	public void setIdPost(int id){
-		this.idPost=id;
+		this.idPost = id;
 	}
 	
 	public String getDescritption(){
@@ -26,23 +28,31 @@ public class Post {
 	}
 	
 	public void setDescription(String desciption){
-		this.description=desciption;
-	}
-	
-	public String getMail(){
-		return this.mail;
-	}
-	
-	public void setMail(String mail){
-		this.mail=mail;
-	}
-	
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+		this.description = desciption;
 	}
 	
 	public String getPseudo() {
 		return this.pseudo;
+	}
+	
+	public void setPseudo(String pseudo){
+		this.pseudo = pseudo;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

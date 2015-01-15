@@ -50,4 +50,17 @@ public class FileFormatUtils {
 	public static String getUniqFileName(String fileName) {
 		return System.currentTimeMillis() + "_" + fileName;
 	}
+
+	public static String getFormatOf(String fileName) {
+		if(isAudioFile(fileName))
+			return "audio";
+		if(isVideoFile(fileName))
+			return "video";
+		if(isImageFile(fileName))
+			return "image";
+		if(isPdfFile(fileName))
+			return "pdf";
+		
+		return "autre";
+	}
 }
