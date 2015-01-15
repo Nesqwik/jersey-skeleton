@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS utilisateur;
 CREATE TABLE commentaire (
 	idCom int primary key,
 	commentaire text,
-	idPoste int,
+	idPost int,
 	pseudo text,
 	foreign key(pseudo) references utilisateur(pseudo),
 	foreign key(idPost) references post(idPost)
