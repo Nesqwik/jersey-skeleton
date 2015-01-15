@@ -1,6 +1,5 @@
 package fr.mediashare.utils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.mediashare.model.User;

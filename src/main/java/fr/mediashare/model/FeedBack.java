@@ -28,6 +28,6 @@ public class FeedBack {
 	}
 	
 	public String toString() {
-		return success + " : " + message;
+		return success + ", " + message;
 	}
 }

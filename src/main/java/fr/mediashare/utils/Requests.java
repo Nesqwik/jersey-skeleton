@@ -24,15 +24,15 @@ public class Requests {
 		this.c = SQLiteConnection.getConnection();
 	}
 
-	public void insertUser(String email, String pseudo, String mdp, int userType) {
+	public void insertUser(User u) {
 		PreparedStatement stmt = null;
 		try {
 			String sql = "INSERT INTO utilisateur(pseudo, mail, mdp, admin) VALUES(?, ?, ?, ?)";
 			stmt = c.prepareStatement(sql);
-			stmt.setString(1, pseudo);
-			stmt.setString(2, email);
-			stmt.setString(3, mdp);
-			stmt.setInt(4, userType);
+			stmt.setString(1, u.getPseudo());
+			stmt.setString(2, u.getEmail());
+			stmt.setString(3, u.getMdp());
+			stmt.setInt(4, u.getUserType());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -259,15 +259,12 @@ public class Requests {
 	public User getUser(String pseudo) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		User u = null;
 		try {
 			stmt = c.prepareStatement("select * from utilisateur where pseudo = ?;");
 			stmt.setString(1, pseudo);
 			rs = stmt.executeQuery();
-			if(rs.next()) {
-				u = new User(rs.getString("pseudo"), rs.getString("mail"), rs.getString("mdp"));
-			}
-			return u;
+			if(rs.next())
+				return new User(rs.getString("pseudo"), rs.getString("mail"), rs.getString("mdp"), 0);
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);
