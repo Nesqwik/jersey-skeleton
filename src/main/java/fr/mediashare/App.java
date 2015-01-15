@@ -17,10 +17,12 @@ import fr.mediashare.ressources.InscriptionResource;
 import fr.mediashare.ressources.MurGeneral;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SupressionAdminResource;
+import fr.mediashare.utils.InitDB;
 
 
 @ApplicationPath("/v1/")
 public class App extends Application{
+	public static SQLiteDataSource ds;
     @Override
     public Set<Class<?>> getClasses() {
     	Set<Class<?>> s = new HashSet<Class<?>>();
@@ -35,9 +37,11 @@ public class App extends Application{
     }
     public static DBI dbi;
 	static {
-		SQLiteDataSource ds = new SQLiteDataSource();
+		ds = new SQLiteDataSource();
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"media_bdd");
+		System.out.println(ds.getUrl());
 		
 		dbi = new DBI(ds);
+		InitDB.up();
     }
 }
