@@ -1,5 +1,9 @@
 body {
 	background-image:url(../images/fond.jpg);
 	background-size: 100%;
-	background-repeat: no-repeat; 
+	background-repeat: no-repeat;
+}
+body{
+	color: green;
+	text-align: center;
 }
