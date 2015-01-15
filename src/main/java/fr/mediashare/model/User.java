@@ -2,11 +2,17 @@ package fr.mediashare.model;
 
 public class User {
 	private String pseudo, email, mdp, mdp2;
+	private int userType;
 
-	public User(String pseudo, String email, String mdp) {
+	public User(String email, String pseudo, String mdp, int userType) {
 		this.setPseudo(pseudo);
 		this.setEmail(email);
 		this.setMdp(mdp);
+		this.setUserType(userType);
+	}
+
+	private void setUserType(int userType) {
+		this.userType = userType;
 	}
 
 	public User() {
@@ -43,5 +49,9 @@ public class User {
 
 	public void setMdp2(String mdp2) {
 		this.mdp2 = mdp2;
+	}
+
+	public int getUserType() {
+		return userType;
 	}
 }

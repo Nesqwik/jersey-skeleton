@@ -14,10 +14,7 @@ public class Ressources {
 	}
 	
 	public static User getUser(String pseudo) {
-		User u = new User();
-		u.setEmail("toto@toto.to");
-		u.setPseudo("toto");
-		u.setMdp("toto");
+		User u = new User("toto@toto.to", "toto", "toto", 0);
 		return u;
 	}
 }
