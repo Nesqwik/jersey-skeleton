@@ -6,17 +6,17 @@ CREATE TABLE commentaire (
 	idCom int primary key,
 	commentaire text,
 	idPoste int,
-	mail text,
-	foreign key(mail) references utilisateur(mail),
-	foreign key(idPoste) references poste(idPoste)
+	pseudo text,
+	foreign key(pseudo) references utilisateur(pseudo),
+	foreign key(idPost) references post(idPost)
 );
 
 CREATE TABLE post (
 	idPost int primary key,
 	description text,
 	path text,
-	mail text,
-	foreign key(mail) references utilisateur(mail)
+	pseudo text,
+	foreign key(pseudo) references utilisateur(pseudo)
 );
 
 CREATE TABLE utilisateur (

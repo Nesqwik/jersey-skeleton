@@ -18,10 +18,10 @@ public class ProfileViewerResource {
 		return user.getEmail();
 	}
 	
-	@POST
+	/*@POST
 	public String getPseudo(User user) {	
 		return user.getPseudo();
-	}
+	}*/
 
 }
 
