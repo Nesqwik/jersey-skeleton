@@ -47,7 +47,7 @@ public class Requests {
 			stmt = c.createStatement();
 			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table);
 			while (rs.next())
-				tmp.add(rs.getString(champ));
+				tmp.add(rs.getString("idPoste")+", " + rs.getString("description") + ", " + rs.getString("mail"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);

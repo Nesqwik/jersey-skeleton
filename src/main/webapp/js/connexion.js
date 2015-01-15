@@ -10,7 +10,10 @@ function connect(login, password){
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);
-			$("#reponse").html(data.idv + " : " + data.name);
+			if(data.success)
+				window.location.replace("murGeneral.html");
+			else
+				$("#reponse").html(data.message);		
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);

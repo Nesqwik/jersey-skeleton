@@ -13,10 +13,9 @@ function register(pseudo, email, mdp, mdp2){
 			}),
 			success : function(data, textStatus, jqXHR) {
 				console.log(data)
+				$("#reponse").html(data.message);
 				if(data.success)
-					window.location.replace("murGeneral.html");
-				else
-					$("#reponse").html(data.message);
+					setTimeout('window.location.replace("connection.html");', 3000);
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR);

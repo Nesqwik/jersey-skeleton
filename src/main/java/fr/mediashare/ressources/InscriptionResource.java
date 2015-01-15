@@ -32,7 +32,7 @@ public class InscriptionResource {
 			return new FeedBack(false, "Cet e-mail est déjà repertorié, rééssayez");
 		else{
 			r.insertUser(user.getEmail(), user.getPseudo(), user.getMdp(), 0);
-			return new FeedBack(true, "Inscription réussie");
+			return new FeedBack(true, "Inscription réussie, redirection vers la page de connexion dans 3 secondes...");
 		}
 	}
 }

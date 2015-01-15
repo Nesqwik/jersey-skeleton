@@ -21,11 +21,8 @@ public class ConnexionResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		
-		if(!r.checkPassword(user) && !r.checkLogin(user))
-			return new FeedBack(true, "Login et/ou mot de passe incorrect");
-		if(!r.checkPassword(user))
-			return new FeedBack(true, "Mot de passe incorrect");
-	
+		if(!r.checkPassword(user) || !r.checkLogin(user))
+			return new FeedBack(false, "Login/mot de passe incorrect");
 		return new FeedBack(true, "Login réussi");
 	}
 }
