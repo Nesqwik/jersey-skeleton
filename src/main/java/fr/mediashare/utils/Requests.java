@@ -173,7 +173,7 @@ public class Requests {
 		return list;
 	}
 
-	public boolean supprimerAdmin(User user) {
+	public boolean supprimerCompte(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
