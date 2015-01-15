@@ -184,4 +184,39 @@ public class Requests {
 		}
 	return tmp;
 	}
+	
+	public void modifierEmail(User user) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("UPDATE utilisateur SET email='"+user.getEmail()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void modifierMdp(User user) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }
