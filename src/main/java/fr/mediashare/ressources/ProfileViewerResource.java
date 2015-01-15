@@ -22,5 +22,6 @@ public class ProfileViewerResource {
 	public String getPseudo(User user) {	
 		return user.getPseudo();
 	}
+
 }*/
 
