@@ -2,7 +2,7 @@ package fr.mediashare.model;
 
 public class Post {
 	private int idPost=0;
-	private String description, mail;
+	private String description, mail, pseudo;
 	
 	public Post(){
 		
@@ -35,6 +35,14 @@ public class Post {
 	
 	public void setMail(String mail){
 		this.mail=mail;
+	}
+	
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	
+	public String getPseudo() {
+		return this.pseudo;
 	}
 
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.mediashare.model.Post;
 import fr.mediashare.model.ResultatRecherche;
 import fr.mediashare.model.User;
 
@@ -220,6 +221,47 @@ public class Requests {
 			try {
 				stmt.close();
 			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public boolean checkSuppression(User user, Post post) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT p.pseudo, u.pseudo FROM utilisateur AS u, post AS p WHERE u.pseudo='"+user.getPseudo()+"' AND p.pseudo='"+post.getPseudo()+"'");
+			if(rs.next())
+				tmp = true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return tmp;
+	}
+	
+	public void supprimerPost(Post post) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("DELETE FROM post WHERE idPost='"+post.getIdPost()+"'");
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
