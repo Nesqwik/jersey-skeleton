@@ -43,14 +43,14 @@ public class App extends Application {
     	return s;
     }
     public static DBI dbi;
-    /*
+    
 	static {
 		ds = new SQLiteDataSource();
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"media_bdd");
-		System.out.println(ds.getUrl());
+		//System.out.println(ds.getUrl());
 		
 		dbi = new DBI(ds);
-		InitDB.up();
+		//InitDB.up();
     }
-    */
+    
 }
