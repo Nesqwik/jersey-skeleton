@@ -1,6 +1,7 @@
 package fr.mediashare.ressources;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -25,6 +26,10 @@ public class InscriptionResource {
 	public FeedBack register(User user) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
+		
+		List<String> pseudos = r.select("utilisateur");
+		if(pseudos.contains(user.getPseudo()))
+			return new FeedBack(false, "Erreur, pseudo déjà utilisé");
 		
 		if (!user.getMdp().equals(user.getMdp2()))
 			return new FeedBack(false, "Erreurs, mots de passe différents");
