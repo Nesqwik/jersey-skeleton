@@ -10,12 +10,13 @@ function connect(login, password){
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);
-			if(data.success){
-				createCookie("id", data.message, 1);
+			if(data.id != -1){
+				createCookie("id", data.id, 1);
 				window.location.replace("murGeneral.html");
+				console.log(readCookie("id"));
 			}
 			else
-				$("#reponse").html(data.message);		
+				$("#reponse").html("Identifiants incorrect !");		
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
