@@ -10,8 +10,10 @@ function connect(login, password){
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);
-			if(data.success)
+			if(data.success){
+				createCookie("id", data.message, 1);
 				window.location.replace("murGeneral.html");
+			}
 			else
 				$("#reponse").html(data.message);		
 		},
