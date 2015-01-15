@@ -41,15 +41,19 @@ public class Requests {
 		}
 	}
 
-	public List<String> select(String table, String champ) {
+	public List<String> select(String table) {
 		List<String> tmp = new LinkedList<String>();
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT " + champ + " FROM " + table);
-			while (rs.next())
-				tmp.add(rs.getString("idPoste")+", " + rs.getString("description") + ", " + rs.getString("mail"));
+			rs = stmt.executeQuery("SELECT * FROM " + table);
+			while (rs.next()){
+				if(table.equals("post"))
+					tmp.add(rs.getString("idPoste")+", " + rs.getString("description") + ", " + rs.getString("mail"));
+				else if(table.equals("utilisateur"))
+					tmp.add(rs.getString("pseudo"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -189,4 +193,39 @@ public class Requests {
 		}
 		return tmp;
 	}
+	
+	public void modifierEmail(User user) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("UPDATE utilisateur SET email='"+user.getEmail()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void modifierMdp(User user) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

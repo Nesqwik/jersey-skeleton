@@ -1,4 +1,4 @@
-function infoEmail(email){
+function getEmail(email){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -16,7 +16,7 @@ function infoEmail(email){
 	});
 }
 
-function infoPseudo(pseudo){
+function getPseudo(pseudo){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',

@@ -20,11 +20,11 @@ public class MurGeneral {
 	public FeedBack reload() {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		List<String> tmp = r.select("post", "*");
+		List<String> tmp = r.select("post");
 		String returnValue = "";
 		
 		for(String s : tmp)
-			returnValue += s + "\n";
+			returnValue += s + "<br />";
 		return new FeedBack(true, returnValue);
 	}
 }
