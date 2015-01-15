@@ -12,4 +12,12 @@ public class Ressources {
 		if(usersLogin == null) usersLogin = new ArrayList<User>();
 		return usersLogin;
 	}
+	
+	public static User getUser(String pseudo) {
+		User u = new User();
+		u.setEmail("toto@toto.to");
+		u.setPseudo("toto");
+		u.setMdp("toto");
+		return u;
+	}
 }

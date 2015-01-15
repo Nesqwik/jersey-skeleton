@@ -37,7 +37,7 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         
-        String description = request.getParameter("desciption");
+        String description = request.getParameter("description");
         
         if (isMultipart) {
         	// Create a factory for disk-based file items
@@ -51,8 +51,8 @@ public class UploadServlet extends HttpServlet {
         	
             try {
             	// Parse the request
-            	List /* FileItem */ items = upload.parseRequest(request);
-                Iterator iterator = items.iterator();
+            	List<?> items = upload.parseRequest(request);
+                Iterator<?> iterator = items.iterator();
                 while (iterator.hasNext()) {
                     FileItem item = (FileItem) iterator.next();
                     if (!item.isFormField()) {
@@ -80,7 +80,7 @@ public class UploadServlet extends HttpServlet {
                 Requests r = new Requests();
                 r.insertPost(description, folderPath + fileName, "toto");
                 
-                out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=" + folderPath + fileName + "\"></head></html>");
+                out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=murGeneral.html\"></head></html>");
             } catch (FileUploadException e) {
                 e.printStackTrace();
             } catch (Exception e) {

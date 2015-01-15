@@ -240,7 +240,7 @@ public class Requests {
 			stmt.setString(2, path);
 			stmt.setString(3, pseudo);
 			
-			
+			stmt.executeUpdate();
 		} catch(Exception e) {
 		e.printStackTrace();
 		System.exit(0);
