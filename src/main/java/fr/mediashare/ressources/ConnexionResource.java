@@ -12,7 +12,6 @@ import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-
 @Path("/connect")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
@@ -21,7 +20,7 @@ public class ConnexionResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		
-		if(!r.checkPassword(user) || !r.checkLogin(user))
+		if(!r.idExist(user))
 			return new FeedBack(false, "Login/mot de passe incorrect");
 		else
 			return new FeedBack(true, user.getPseudo());

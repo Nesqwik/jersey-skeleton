@@ -12,19 +12,22 @@ import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/deleteAdmin")
+@Path("/deleteUser")
 @Produces(MediaType.APPLICATION_JSON)
-public class SupressionAdminResource {
+public class SuppressionUserResource {
+
 	@POST 
 	public FeedBack connect(User user) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 
 		if(r.supprimerCompte(user)){
-			return new FeedBack(true, "Utilisateur supprimé");
+			return new FeedBack(true, "Votre compte a bien été supprimé");
 		}
 		else{ 
-			return new FeedBack(true, "Pseudo inconnu");
+			return new FeedBack(true, "Pseudo incorrect");
 		}
 	}
+
+
 }

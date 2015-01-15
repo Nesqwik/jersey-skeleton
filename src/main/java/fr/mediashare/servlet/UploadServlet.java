@@ -3,6 +3,7 @@ package fr.mediashare.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,9 +20,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.sun.research.ws.wadl.Request;
-
 import fr.mediashare.utils.FileFormatUtils;
+import fr.mediashare.utils.Requests;
 
 
 @WebServlet(name = "uploadServlet", urlPatterns = { "/upload" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
@@ -38,8 +38,6 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         
-        String description = request.getParameter("desciption");
-        
         if (isMultipart) {
         	// Create a factory for disk-based file items
         	FileItemFactory factory = new DiskFileItemFactory();
@@ -49,13 +47,11 @@ public class UploadServlet extends HttpServlet {
         	
         	String folderPath = "";
         	String fileName = "";
-        	
+        	String description = "";
             try {
             	// Parse the request
-            	List /* FileItem */ items = upload.parseRequest(request);
-                Iterator iterator = items.iterator();
-                while (iterator.hasNext()) {
-                    FileItem item = (FileItem) iterator.next();
+            	List<FileItem> items = upload.parseRequest(request);
+                for(FileItem item : items) {
                     if (!item.isFormField()) {
                         String name = item.getName();
                         fileName = FileFormatUtils.getUniqFileName(name);
@@ -72,15 +68,20 @@ public class UploadServlet extends HttpServlet {
                         File uploadedFile = new File(root + folderPath + fileName);
                         System.out.println(uploadedFile.getAbsolutePath());
                         item.write(uploadedFile);
+                    } else {
+                         if(item.getFieldName().equals("description")) {
+                        	 description = item.getString();
+                         }
                     }
                 }
                 
                 PrintWriter out = response.getWriter();
                 response.setContentType("text/html");
                 
-                Request r = new Request();
+                Requests r = new Requests();
+                r.insertPost(description, folderPath + fileName, "toto");
                 
-                out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=" + folderPath + fileName + "\"></head></html>");
+                out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=murGeneral.html\"></head></html>");
             } catch (FileUploadException e) {
                 e.printStackTrace();
             } catch (Exception e) {

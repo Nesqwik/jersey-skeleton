@@ -2,7 +2,6 @@ package fr.mediashare.model;
 
 public class User {
 	private String pseudo, email, mdp, mdp2;
-	private int id = 0;
 
 	public User(String pseudo, String email, String mdp) {
 		this.setPseudo(pseudo);
@@ -14,15 +13,7 @@ public class User {
 		
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getPseudo() {
+	 public String getPseudo() {
 		return pseudo;
 	}
 

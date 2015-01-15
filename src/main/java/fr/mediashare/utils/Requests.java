@@ -16,16 +16,20 @@ public class Requests {
 	private Connection c;
 
 	public Requests(Connection c) {
-		this.c = c;
+		this.c = SQLiteConnection.getConnection();
+	}
+	
+	public Requests() {
+		this.c = SQLiteConnection.getConnection();
 	}
 
 	public void insertUser(String email, String pseudo, String mdp, int userType) {
 		PreparedStatement stmt = null;
 		try {
-			String sql = "INSERT INTO utilisateur VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO utilisateur(pseudo, mail, mdp, admin) VALUES(?, ?, ?, ?)";
 			stmt = c.prepareStatement(sql);
-			stmt.setString(1, email);
-			stmt.setString(2, pseudo);
+			stmt.setString(1, pseudo);
+			stmt.setString(2, email);
 			stmt.setString(3, mdp);
 			stmt.setInt(4, userType);
 			stmt.executeUpdate();
@@ -50,7 +54,7 @@ public class Requests {
 			rs = stmt.executeQuery("SELECT * FROM " + table);
 			while (rs.next()){
 				if(table.equals("post"))
-					tmp.add(rs.getString("idPoste")+", " + rs.getString("description") + ", " + rs.getString("mail"));
+					tmp.add(rs.getString("idPost")+", " + rs.getString("description") + ", " + rs.getString("mail"));
 				else if(table.equals("utilisateur"))
 					tmp.add(rs.getString("pseudo"));
 			}
@@ -91,52 +95,24 @@ public class Requests {
 		return false;
 	}
 
-	public boolean checkLogin(User user) {
-		Statement stmt = null;
-		ResultSet rs = null;
-		boolean tmp = false;
+	public boolean idExist(User user) {
+		PreparedStatement stmt = null;
 		try {
-			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
-			if(rs.next())
-				tmp = true;
+			stmt = c.prepareStatement("select * from utilisateur where pseudo = ? and mdp = ?");
+			stmt.setString(1, user.getPseudo());
+			stmt.setString(2, user.getMdp());
+			return stmt.executeQuery().next();
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		} finally {
 			try {
-				rs.close();
 				stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		return tmp;
-	}
-
-	public boolean checkPassword(User user) {
-		Statement stmt = null;
-		ResultSet rs = null;
-		boolean tmp = false;
-		try {
-			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM utilisateur WHERE pseudo='"+user.getPseudo()+"'");
-			if(rs.next()) {
-				if(rs.getString("mdp").equals(user.getMdp()))
-					tmp = true;
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.exit(0);
-		} finally {
-			try {
-				rs.close();
-				stmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return tmp;
+		return false;
 	}
 
 	public List<ResultatRecherche> search(String table, String champ, String recherche) {
@@ -169,7 +145,7 @@ public class Requests {
 		return list;
 	}
 
-	public boolean supprimerAdmin(User user) {
+	public boolean supprimerCompte(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
@@ -216,6 +192,27 @@ public class Requests {
 		try {
 			stmt = c.createStatement();
 			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+		} catch(Exception e) {
+		e.printStackTrace();
+		System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void insertPost(String description, String path, String pseudo) {
+		PreparedStatement stmt = null;
+		try {
+			stmt = c.prepareStatement("INSERT INTO post(description, path, pseudo) VALUES(?, ?, ?)");
+			stmt.setString(1, description);
+			stmt.setString(2, path);
+			stmt.setString(3, pseudo);
+			
+			stmt.executeUpdate();
 		} catch(Exception e) {
 		e.printStackTrace();
 		System.exit(0);

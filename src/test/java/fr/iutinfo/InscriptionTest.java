@@ -20,7 +20,7 @@ public class InscriptionTest extends JerseyTest {
     }
 	
 	@Test
-	public void testReadUserWithNameFooAsJsonString() {
+	public void testTrue() {
 	/*	String json = target("/register").request().get(String.class);
 		assertEquals("{\"id\":5,\"name\":\"foo\"}", json);*/
 		assertTrue(true);

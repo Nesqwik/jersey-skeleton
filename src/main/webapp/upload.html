@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Mediashare - upload</title>
-	<meta charset='utf-8'>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="styles/pages.css">
+		<title>Mediashare - upload</title>
+		<meta charset='utf-8'>
+		<link rel="stylesheet" href="styles/bootstrap.min.css">
+		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="styles/pages.css">
+	
+		<!-- jQuery -->
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript">
 			function fileSelected() {
 				var file = document.getElementById('fileToUpload').files[0];
@@ -72,16 +76,17 @@
 		</div>
 		<center>
 			<h1><b>Mediashare</b></h1>
-			<form id="form1" enctype="multipart/form-data" method="post" action="upload">
+			<form method="POST" action="upload" enctype="multipart/form-data" >
 				<div class="row">
 					<label for="fileToUpload">Choisissez un fichier à uploader</label><br />
 					<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+					<input type="text" name="description" id="description" />
 				</div>
 				<div id="fileName"></div>
 				<div id="fileSize"></div>
 				<div id="fileType"></div>
 				<div class="row">
-					<input id="valider" type="button" onclick="uploadFile()" value="Upload" />
+				<input type="submit" value="upload" name="upload" id="upload" />
 				</div>
 				<div id="progressNumber"></div>
 			</form>
