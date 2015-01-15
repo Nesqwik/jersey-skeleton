@@ -6,4 +6,9 @@
 target/
 bdd_media
 *.mp3
-webapp/files/
+webapp/files/*
+webapp/files/video/*
+webapp/files/audio/*
+webapp/files/pdf/*
+webapp/files/image/*
+webapp/files/other/*
