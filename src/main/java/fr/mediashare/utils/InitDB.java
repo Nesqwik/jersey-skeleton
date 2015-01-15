@@ -8,21 +8,19 @@ import fr.mediashare.dao.UserDao;
 
 public class InitDB {
 
-	public static void up(DBI dbi){
+	public static void up(DBI dbi) {
 		CommentaireDao daoc = dbi.open(CommentaireDao.class);
 		UserDao daou = dbi.open(UserDao.class);
 		PostDao daop = dbi.open(PostDao.class);
-		try{
+		try {
 			daou.createTableUtilisateur();
 			daoc.createTableCommentaire();
 			daop.createTablePost();
-
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Tables déjà crées !");
 		}
-		try{
-			daou.createAdminKileurf();
-		}catch(Exception e){}
+		daou.createAdminKileurf();
+
 	}
 
 }
