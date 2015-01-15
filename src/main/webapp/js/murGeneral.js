@@ -14,15 +14,8 @@ function reload(){
 				content += "<div class=\"post\">";
 				content += "<div class=\"pseudo\">" + data[i].pseudo + "</div>";
 				content += "<div class=\"description\">" + data[i].description + "</div>";
-				if(data[i].type == "audio")
-					content += "<audio controls=\"controls\"> <source src=\"" + data[i].path + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio>";
 				
-				if(data[i].type == "video")
-					content += "<video controls src=\"" + data[i].path + "\"> video mp4 </video>";
-				
-				if(data[i].type == "image")
-					content += "<image controls src=\" " + data[i].path + "\"></image>";
-			
+				content += getHtmlFromData(data[i]);
 				
 				content += "</div>";
 			}
@@ -33,4 +26,18 @@ function reload(){
 			alert('erreur');
 		}
 	});
+}
+
+
+function getHtmlFromData(post){
+	
+	if(post.type == "audio")
+		//return "<button id=\"\" class=\"btn btn-primary\">Valider</button>";
+		return "<audio controls=\"controls\"> <source src=\"" + post.path + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio>";
+	
+	if(post.type == "video")
+		return "<video controls src=\"" + post.path + "\"> video mp4 </video>";
+	
+	if(post.type == "image")
+		return "<image controls src=\" " + post.path + "\"></image>";
 }

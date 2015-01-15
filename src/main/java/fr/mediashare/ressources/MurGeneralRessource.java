@@ -21,9 +21,6 @@ public class MurGeneralRessource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		List<Post> l = r.selectAllPosts();
-		for(Post p : l) {
-			System.out.println(p.getPseudo() + ":" + p.getDescritption() + ":" + p.getPath());
-		}
 		return l;
 	}
 }
