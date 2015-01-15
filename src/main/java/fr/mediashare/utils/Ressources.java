@@ -6,7 +6,7 @@ import fr.mediashare.model.User;
 
 public class Ressources {
 
-	private static HashMap<Integer, User> usersLogin;
+	private static HashMap<Integer, User> usersLogin = new HashMap<Integer, User>();
 	
 	public static HashMap<Integer, User> getUsersLogin() {
 		if(usersLogin == null) usersLogin = new HashMap<Integer, User>();

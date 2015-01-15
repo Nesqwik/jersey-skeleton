@@ -10,11 +10,14 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
+import fr.mediashare.ressources.CommentaireResource;
 import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
+import fr.mediashare.ressources.ModifierProfilResource;
 import fr.mediashare.ressources.MurGeneralRessource;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SuppressionUserResource;
+import fr.mediashare.ressources.SupprimerPostResource;
 import fr.mediashare.ressources.SupressionAdminResource;
 import fr.mediashare.utils.InitDB;
 //import fr.mediashare.ressources.ModifierProfilResource;
@@ -34,7 +37,9 @@ public class App extends Application {
     	s.add(ConnexionResource.class);
     	s.add(SupressionAdminResource.class);
     	s.add(SuppressionUserResource.class);
-    	//s.add(ModifierProfilResource.class);
+    	s.add(ModifierProfilResource.class);
+    	s.add(CommentaireResource.class);
+    	s.add(SupprimerPostResource.class);
     	return s;
     }
     public static DBI dbi;

@@ -54,4 +54,8 @@ public class User {
 	public int getUserType() {
 		return userType;
 	}
+	
+	public String toString() {
+		return pseudo + " -> " + email;
+	}
 }

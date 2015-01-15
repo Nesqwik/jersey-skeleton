@@ -1,5 +1,4 @@
 package fr.mediashare.utils;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,21 +8,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.mediashare.model.Commentaire;
 import fr.mediashare.model.Post;
 import fr.mediashare.model.ResultatRecherche;
 import fr.mediashare.model.User;
-
 public class Requests {
 	private Connection c;
-
 	public Requests(Connection c) {
 		this.c = SQLiteConnection.getConnection();
 	}
-	
 	public Requests() {
 		this.c = SQLiteConnection.getConnection();
 	}
-
 	public void insertUser(User u) {
 		PreparedStatement stmt = null;
 		try {
@@ -45,7 +41,6 @@ public class Requests {
 			}
 		}
 	}
-
 	public List<String> select(String table) {
 		List<String> tmp = new LinkedList<String>();
 		Statement stmt = null;
@@ -72,9 +67,6 @@ public class Requests {
 		}
 		return tmp;
 	}
-	
-	
-	
 	public List<Post> selectAllPosts() {
 		List<Post> posts = new ArrayList<Post>();
 		Statement stmt = null;
@@ -83,10 +75,10 @@ public class Requests {
 			stmt = c.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM post;");
 			while (rs.next()){
-				Post p = new Post(rs.getString("description"), 
-									rs.getString("pseudo"), 
-									rs.getString("path"), 
-									FileFormatUtils.getFormatOf(rs.getString("path")));
+				Post p = new Post(rs.getString("description"),
+						rs.getString("pseudo"),
+						rs.getString("path"),
+						FileFormatUtils.getFormatOf(rs.getString("path")));
 				posts.add(p);
 			}
 		} catch (Exception e) {
@@ -102,14 +94,12 @@ public class Requests {
 		}
 		return posts;
 	}
-
 	public boolean emailExist(String email) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
 			stmt = c.prepareStatement("SELECT mail from utilisateur where mail = ?");
 			stmt.setString(1, email);
-
 			rs = stmt.executeQuery();
 			return rs.next();
 		} catch (Exception e) {
@@ -125,7 +115,6 @@ public class Requests {
 		}
 		return false;
 	}
-
 	public boolean idExist(User user) {
 		PreparedStatement stmt = null;
 		try {
@@ -145,7 +134,6 @@ public class Requests {
 		}
 		return false;
 	}
-
 	public List<ResultatRecherche> search(String table, String champ, String recherche) {
 		List<ResultatRecherche> list = new ArrayList<ResultatRecherche>();
 		Statement stmt = null;
@@ -174,7 +162,6 @@ public class Requests {
 		}
 		return list;
 	}
-
 	public boolean supprimerCompte(User user) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -199,15 +186,14 @@ public class Requests {
 		}
 		return tmp;
 	}
-	
 	public void modifierEmail(User user) {
 		Statement stmt = null;
 		try {
 			stmt = c.createStatement();
 			stmt.executeUpdate("UPDATE utilisateur SET email='"+user.getEmail()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
+			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				stmt.close();
@@ -216,15 +202,14 @@ public class Requests {
 			}
 		}
 	}
-	
 	public void modifierMdp(User user) {
 		Statement stmt = null;
 		try {
 			stmt = c.createStatement();
 			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
+			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				stmt.close();
@@ -233,7 +218,6 @@ public class Requests {
 			}
 		}
 	}
-	
 	public void insertPost(String description, String path, String pseudo) {
 		PreparedStatement stmt = null;
 		try {
@@ -241,11 +225,10 @@ public class Requests {
 			stmt.setString(1, description);
 			stmt.setString(2, path);
 			stmt.setString(3, pseudo);
-			
 			stmt.executeUpdate();
 		} catch(Exception e) {
-		e.printStackTrace();
-		System.exit(0);
+			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				stmt.close();
@@ -254,7 +237,6 @@ public class Requests {
 			}
 		}
 	}
-	
 	public boolean checkSuppression(User user, Post post) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -275,10 +257,8 @@ public class Requests {
 				e.printStackTrace();
 			}
 		}
-		
 		return tmp;
 	}
-	
 	public void supprimerPost(Post post) {
 		Statement stmt = null;
 		try {
@@ -295,7 +275,6 @@ public class Requests {
 			}
 		}
 	}
-
 	public User getUser(String pseudo) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -317,5 +296,44 @@ public class Requests {
 		}
 		return null;
 	}
-
+	
+	public void addCommentaire(Commentaire commentaire, Post post, User user) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("INSERT INTO commentaire(commentaire,idPost,pseudo) values('"+commentaire.getCommentaire()+"'"+post.getIdPost()+"'"+user.getPseudo()+"'");
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public boolean checkSuppressionComment(Commentaire commentaire, User user, Post post) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM commentaire AS c, post AS p, utilisateur AS u WHERE c.idPost='"+post.getIdPost()+"' AND p.idPost='"+commentaire.getIdPost()+"' AND c.pseudo='"+user.getPseudo()+"'");
+			if(rs.next())
+				tmp = true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tmp;
+	} 
 }
