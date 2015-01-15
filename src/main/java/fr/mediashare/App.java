@@ -13,9 +13,8 @@ import org.sqlite.SQLiteDataSource;
 
 import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.ressources.InscriptionResource;
-import fr.mediashare.ressources.ModifierProfilResource;
+//import fr.mediashare.ressources.ModifierProfilResource;
 import fr.mediashare.ressources.MurGeneral;
-import fr.mediashare.ressources.ProfileViewerResource;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SupressionAdminResource;
 
@@ -31,8 +30,7 @@ public class App extends Application{
     	s.add(RechercheResource.class);
     	s.add(ConnexionResource.class);
     	s.add(SupressionAdminResource.class);
-    	s.add(ModifierProfilResource.class);
-    	s.add(ProfileViewerResource.class);
+    	//s.add(ModifierProfilResource.class);
     	return s;
     }
     public static DBI dbi;

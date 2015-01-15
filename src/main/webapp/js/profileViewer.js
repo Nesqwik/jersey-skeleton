@@ -1,4 +1,4 @@
-function getEmail(email){
+/*function getEmail(email){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -32,4 +32,4 @@ function getPseudo(pseudo){
 			alert('postUser error: ' + textStatus);
 		}
 	});
-}
+}*/

@@ -1,4 +1,4 @@
-package fr.mediashare.ressources;
+/*package fr.mediashare.ressources;
 
 
 import javax.ws.rs.POST;
@@ -23,5 +23,5 @@ public class ProfileViewerResource {
 		return user.getPseudo();
 	}
 
-}
+}*/
 
