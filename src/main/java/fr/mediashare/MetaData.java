@@ -12,10 +12,11 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
 
+import fr.mediashare.utils.FileFormatUtils;
+
 public class MetaData {
 	public static void choixLecteur(File f) throws IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
 		String[] tab=f.getAbsolutePath().split("\\.");
-		System.out.println(f.getAbsolutePath());
 		
 		
 		ArrayList<String> audio = new ArrayList<>();
@@ -37,20 +38,20 @@ public class MetaData {
 		video.add("mp4");
 		video.add("avi");
 		
-		if(audio.contains(tab[tab.length-1]))
+		if(FileFormatUtils.isAudioFile(f.getName()))
 			lireMetaAudio(f);
 		
-		else if(image.contains(tab[tab.length-1]))
+		else if(FileFormatUtils.isImageFile(f.getName()))
 			System.out.println("redirection");
 		
-		else if(tab[tab.length-1].equals("pdf"))
+		else if(FileFormatUtils.isPdfFile(f.getName()))
 			System.out.println("todo");
 		
-		else if(tab[tab.length-1].equals("txt"))
-			lireMetaTxt(f);
-		
-		else if(video.contains(tab[tab.length-1]))
+		else if(FileFormatUtils.isVideoFile(f.getName()))
 			System.out.println("redirection");
+		
+		else
+			lireMetaTxt(f);
 	}
 	
 	public static ArrayList<String> lireMetaAudio(File f) throws  IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
@@ -102,12 +103,12 @@ public class MetaData {
 	public static void main(String[] args) throws IOException, CannotReadException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
 		MetaData test = new MetaData();
 		
-		test.lireMetaAudio(new File("/tmp/bulteela/workspace/mediashare/00014.mp3"));
+		/*test.lireMetaAudio(new File("/tmp/guilberl/workspace/mediashare/00014.mp3"));
 		
 		
 		test.choixLecteur(new File("/home/infoetu/bulteela/Téléchargements/travail.jpg"));
 		test.choixLecteur(new File("/home/infoetu/bulteela/group.txt"));
-		test.choixLecteur(new File("/home/infoetu/bulteela/Téléchargements/azert.3gp"));
+		test.choixLecteur(new File("/home/infoetu/bulteela/Téléchargements/azert.3gp"));*/
 	}
 
 }
