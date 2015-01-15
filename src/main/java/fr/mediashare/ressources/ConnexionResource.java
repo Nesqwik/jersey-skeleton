@@ -12,7 +12,6 @@ import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-
 @Path("/connect")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
