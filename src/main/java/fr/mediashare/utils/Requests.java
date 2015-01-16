@@ -314,7 +314,7 @@ public class Requests {
 		}
 	}
 	
-	public boolean checkSuppressionComment(Commentaire commentaire, User user, Post post) {
+	public boolean checkSuppressionCommentaire(Commentaire commentaire, User user, Post post) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
@@ -336,4 +336,21 @@ public class Requests {
 		}
 		return tmp;
 	} 
+	
+	public void supprimerCommentaire(Commentaire commentaire) {
+		Statement stmt = null;
+		try {
+			stmt = c.createStatement();
+			stmt.executeUpdate("DELETE FROM commentaire WHERE idCom='"+commentaire.getIdCom()+"'");
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

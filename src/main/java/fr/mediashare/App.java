@@ -17,6 +17,7 @@ import fr.mediashare.ressources.ModifierProfilResource;
 import fr.mediashare.ressources.MurGeneralRessource;
 import fr.mediashare.ressources.RechercheResource;
 import fr.mediashare.ressources.SuppressionUserResource;
+import fr.mediashare.ressources.SupprimerCommentaireResource;
 import fr.mediashare.ressources.SupprimerPostResource;
 import fr.mediashare.ressources.SupressionAdminResource;
 import fr.mediashare.utils.InitDB;
@@ -47,6 +48,7 @@ public class App extends Application {
     	s.add(ModifierProfilResource.class);
     	s.add(CommentaireResource.class);
     	s.add(SupprimerPostResource.class);
+    	s.add(SupprimerCommentaireResource.class);
     	return s;
     }
     public static DBI dbi;
