@@ -22,12 +22,11 @@ public class SupprimerCommentaireResource {
 	public FeedBack delete(Commentaire commentaire, User user, Post post) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		//En cours
-		/*if(r.checkSuppressionComment(user,post)) {
-			r.supprimerComment(commentaire);
-			return new FeedBack(true,"Post supprimé");
-		}*/
+		if(r.checkSuppressionCommentaire(commentaire,user,post)) {
+			r.supprimerCommentaire(commentaire);
+			return new FeedBack(true,"Commentaire supprimé");
+		}
 		
-		return new FeedBack(false,"Vous ne pouvez pas supprimer ce post");
+		return new FeedBack(false,"Vous ne pouvez pas supprimer ce commentaire");
 	}
 }
