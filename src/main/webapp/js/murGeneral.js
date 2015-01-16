@@ -22,10 +22,8 @@ function reload(){
 					content += "<video controls src=\"" + data[i].path + "\"> video mp4 </video>";
 				
 				if(data[i].type == "image")
-					content += "<image controls src=\" " + data[i].path + "\"></image>";
-			
-				
-				content += "</div>";
+					content += "<image controls src=\" " + data[i].path + "\" class=\"img-responsive\"></image>";
+					content += "</div>";
 			}
 			$("#posts").html(content);
 		},
