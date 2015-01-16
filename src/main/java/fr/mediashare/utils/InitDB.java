@@ -19,14 +19,14 @@ public class InitDB {
 		} catch (Exception e) {
 			System.out.println("Tables déjà crées !");
 		}
-		finally{
+		/*finally{
 			try{
 				daou.createAdminKileurf();
 			} catch (Exception e){
 				System.out.println("Impossible de créer le super Admin :(");
 				e.printStackTrace();
 			}
-		}
+		}*/
 
 	}
 
