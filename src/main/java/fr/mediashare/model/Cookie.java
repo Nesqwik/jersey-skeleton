@@ -6,6 +6,7 @@ public class Cookie {
 	private int id;
 
 	public Cookie() {
+		id = -1;
 	}
 	
 	public Cookie(int id) {

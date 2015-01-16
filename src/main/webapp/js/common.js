@@ -22,3 +22,28 @@ function readCookie(name) {
 function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
+
+
+
+function isConnected(idCookie){
+	var connected = false;
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/connect/check",
+		dataType : "json",
+		data : JSON.stringify({
+			"id" : idCookie
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log(data.success);
+			if(!data.success)
+				window.location.replace("connection.html");
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser is connected error: ' + textStatus);
+		}
+	});
+	
+	return connected;
+}

@@ -16,6 +16,13 @@
 		<!-- Code local -->
 		<script src="js/murGeneral.js"></script>
 		<script src="js/common.js"></script>
+		<script type="text/javascript">
+    		function preloadFunc()
+    		{
+    			isConnected(readCookie("id"));
+    		}
+    		$(document).ready(function() {preloadFunc();});
+		</script>
 		
 	</head>
 	<body>
@@ -34,11 +41,11 @@
 				</div>
 		</center>
 		<script type="text/javascript">
-			window.onload = function() {
+			/*window.onload = function() {
 					console.log(readCookie("id"));
 					reload();
 			}
-			$("#reload").click(function () {reload()})
+			$("#reload").click(function () {reload()})*/
   		</script>
 	</body>
 </html>
