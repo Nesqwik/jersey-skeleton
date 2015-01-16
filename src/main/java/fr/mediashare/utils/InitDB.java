@@ -16,10 +16,16 @@ public class InitDB {
 			daou.createTableUtilisateur();
 			daoc.createTableCommentaire();
 			daop.createTablePost();
-			//daou.createAdminKileurf();
-
 		} catch (Exception e) {
 			System.out.println("Tables déjà crées !");
+		}
+		finally{
+			try{
+				daou.createAdminKileurf();
+			} catch (Exception e){
+				System.out.println("Impossible de créer le super Admin :(");
+				e.printStackTrace();
+			}
 		}
 
 	}
