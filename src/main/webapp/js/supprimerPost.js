@@ -1,11 +1,12 @@
-function deletePost(post){
+function deletePost(user,post){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
 		url : "v1/deletePost/",
 		dataType : "json",
 		data : JSON.stringify({
-			"post" : post,
+			"pseudo" : user,
+			"idPost" : post
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)

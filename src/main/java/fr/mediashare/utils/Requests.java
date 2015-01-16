@@ -237,13 +237,13 @@ public class Requests {
 			}
 		}
 	}
-	public boolean checkSuppression(User user, Post post) {
+	public boolean checkSuppression(Post post) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT p.pseudo, u.pseudo FROM utilisateur AS u, post AS p WHERE u.pseudo='"+user.getPseudo()+"' AND p.pseudo='"+post.getPseudo()+"'");
+			rs = stmt.executeQuery("SELECT p.pseudo, u.pseudo FROM utilisateur AS u, post AS p WHERE u.pseudo='"+post.getPseudo()+"' AND p.pseudo='"+post.getPseudo()+"'");
 			if(rs.next())
 				tmp = true;
 		} catch(Exception e) {
@@ -319,11 +319,11 @@ public class Requests {
 		return null;
 	}
 	
-	public void addCommentaire(Commentaire commentaire, Post post, User user) {
+	public void addCommentaire(Commentaire commentaire) {
 		Statement stmt = null;
 		try {
 			stmt = c.createStatement();
-			stmt.executeUpdate("INSERT INTO commentaire(commentaire,idPost,pseudo) values('"+commentaire.getCommentaire()+"'"+post.getIdPost()+"'"+user.getPseudo()+"'");
+			stmt.executeUpdate("INSERT INTO commentaire(commentaire,idPost,pseudo) values('"+commentaire.getCommentaire()+"'"+commentaire.getIdPost()+"'"+commentaire.getPseudo()+"'");
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -336,13 +336,13 @@ public class Requests {
 		}
 	}
 	
-	public boolean checkSuppressionCommentaire(Commentaire commentaire, User user, Post post) {
+	public boolean checkSuppressionCommentaire(Commentaire commentaire) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		boolean tmp = false;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM commentaire AS c, post AS p, utilisateur AS u WHERE c.idPost='"+post.getIdPost()+"' AND p.idPost='"+commentaire.getIdPost()+"' AND c.pseudo='"+user.getPseudo()+"'");
+			rs = stmt.executeQuery("SELECT * FROM commentaire AS c, post AS p, utilisateur AS u WHERE c.idPost='"+commentaire.getIdPost()+"' AND p.idPost='"+commentaire.getIdPost()+"' AND c.pseudo='"+commentaire.getPseudo()+"'");
 			if(rs.next())
 				tmp = true;
 		} catch(Exception e) {
