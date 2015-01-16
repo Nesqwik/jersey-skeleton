@@ -22,12 +22,12 @@ public class RechercheResource {
 	@POST
 	public List<ResultatRecherche> Search(Recherche recherche) {
 		List<ResultatRecherche> list = new ArrayList<ResultatRecherche>();
-		if(recherche.getKeywords().equals("")){
-			return list;
-		}
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		list = r.search("post", "description", recherche.getKeywords());
+		for(int i=0; i< list.size(); i++){
+			list.get(i).setType(recherche.getType());
+		}
 		if(recherche.getType().equals("Musique")){
 			for(int i=0; i <list.size(); i++){
 				System.out.println(FileFormatUtils.isAudioFile(list.get(i).getChemin()));

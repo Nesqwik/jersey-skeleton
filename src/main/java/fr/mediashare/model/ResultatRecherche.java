@@ -5,7 +5,16 @@ public class ResultatRecherche {
 	private String description;
 	private String chemin;
 	private String pseudo;
+	private String type;
 	private int idPost;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getDescription() {
 		return description;
