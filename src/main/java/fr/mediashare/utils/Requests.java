@@ -305,7 +305,7 @@ public class Requests {
 			stmt.setString(1, pseudo);
 			rs = stmt.executeQuery();
 			if(rs.next())
-				return new User(rs.getString("pseudo"), rs.getString("mail"), rs.getString("mdp"), 0);
+				return new User(rs.getString("mail"), rs.getString("pseudo"), rs.getString("mdp"), 0);
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);
