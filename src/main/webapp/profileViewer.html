@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="styles/all.css">
-		<link rel="stylesheet" href="styles/murGeneral.css">
+		<link rel="stylesheet" href="styles/profileViewer.css">
 		<script src="js/bootstrap.min.js"></script>
 		
 		<!-- jQuery -->
@@ -35,7 +35,7 @@
 				</div>			
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="murGeneral.html">Mur G�n�ral</a></li>
+						<li><a href="murGeneral.html">Mur général</a></li>
 						<li><a href="recherche.html">Recherche</a></li>
 						<li><a href="upload.html">Upload</a></li>
 						<li><a href="logout.html">Deconnection</a></li>
@@ -52,9 +52,12 @@
 			<center>
 				<div class="btn-group" role="group">
 					<h1> Profil </h1>
-					<br><p>Email :</p><p id="email"></p>
-					<br><p>Pseudo : </p><p id="pseudo"></p>
-					<input type="button" value="Modifier profil" onClick="javascript:document.location.href='modifierProfil.html'" />
+					<br><span>Pseudo : </span>
+						<span id="pseudo"> </span>
+					<br>
+						<span>Email :</span>
+						<span id="email"> </span> <br /><br />
+					<input type="button" class="btn btn-warning" value="Modifier profil" onClick="javascript:document.location.href='modifierProfil.html'" />
 				</div>
 			</center>
 		</div>
