@@ -1,3 +1,9 @@
 .title{
 	color: red;
 }
+
+#id{
+	color: blue;
+	text-align: center;
+	font-size: 25px;
+}
