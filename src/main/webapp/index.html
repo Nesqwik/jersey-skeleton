@@ -1,35 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Mediashare - index</title>
+		<title>Accueil</title>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="styles/pages.css">
+		<link rel="stylesheet" href="styles/all.css">
+		<link rel="stylesheet" href="styles/index.css">
 		
 		<!-- jQuery -->
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/jquery-migrate-1.2.1.min.js"></script>
 	</head>
 	<body>
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a class="banner" href="index.html"> <img class="banner" src="images/banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
-				<li><p class="navbar-text"><a href="connection.html">Connexion</a></p></li>
-				<li><p class="navbar-text"><a href="inscription.html">Inscription</a></p></li>
-				<li><p class="navbar-text"><a href="contact.html">Contact</a></p></li>			
-			</ul>
-		</div>
+		<nav class="navbar navbar-default barre">
+			<div class="container-fluid">	
+				<div class="navbar-header">
+					<a href="index.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:100px"> </a>
+					<a> &nbsp; &nbsp;  </a>
+				</div>			
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Accueil</a></li>
+						<li><a href="connection.html">Connexion</a></li>
+						<li><a href="inscription.html">Inscription</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+							<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav><br />
+	 
+		<h1 class="text-center title">Bienvenue sur Mediashare!</h1><br /><br /><br /><br />
+		
 		<div class="container">
 			<div class="row">
-				<div class="btn-group" role="group">
+				<div class="col-sm-4 text-left">
+					<h3>
+						Le projet mediashare est né lors d'un projet
+						collaboratif de sept etudiants, au sein de l'IUT A 
+						de l'universite de Lille 1. 
+						Il est hebergé sur un serveur Tomcat et 
+						utilise les technologies suivantes :
+						Java, Javascript, Html, CSS, REST, SQL, Maven
+					</h3>
 				</div>
-			</div>	
+				
+				<div class="col-sm-4 text-center">
+					<h3>
+						Le but est de pouvoir partager
+						des fichiers en tout genre, mais aussi de pouvoir
+						tchater avec les autres utilisateurs, de gérer 
+						une liste d'amis et de commenter les uploads à 
+						la manière d'un réseau social.
+					</h3>
+				</div>
+				
+				<div class="col-sm-4 text-right">
+					<h3>
+						Vous pourrez également télécharger vos fichiers préférés
+						en les recherchant dans notre base de données.
+						N'hésitez pas, l'inscription est gratuite et ne prend
+						que quelques secondes !
+					</h3>
+				</div>
+			</div>
 		</div>
-		<h1>Bienvenue sur Mediashare!</h1>
-		<p>Le projet mediashare est ne lors d'un projet collaboratif de sept etudiants, au sein de l'IUT A de l'universite de Lille1<br/>
-		Il est heberge sur un serveur tomcat et utilise les technologies suivantes:<br/>Java, Javascript, html, css, REST, sql pour la base de donnees</br>
-		Le but est de pouvoir partager et telecharger des fichiers en tout genre, mais aussi de pouvoir tchater avec les autres utilisateurs, de gerer une liste d'amis et de commenter les uploads.<br/>
-		</p>
 	</body>
 </html>

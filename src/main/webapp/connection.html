@@ -10,7 +10,8 @@
 		<!-- bootstrap -->
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="styles/pages.css">
+		<link rel="stylesheet" href="styles/all.css">
+		<link rel="stylesheet" href="styles/connection.css">
 		<script src="js/bootstrap.min.js"></script>
 		
 		<!-- Code local -->
@@ -18,24 +19,34 @@
 		<script src="js/connexion.js"></script>
 	</head>
 	<body>
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="index.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
-				<li class="active"><p class="navbar-text"><a href="index.html">Accueil</a></p></li>
-				<li class="active"><p class="navbar-text"><a href="inscription.html">Inscription</a></p></li>
-			</ul>
-		</div>
+		<nav class="navbar navbar-default barre">
+			<div class="container-fluid">	
+				<div class="navbar-header">
+					<a href="index.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:100px"> </a>
+					<a> &nbsp; &nbsp;  </a>
+				</div>			
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Accueil</a></li>
+						<li><a href="inscription.html">Inscription</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+							<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav><br />
 		<div class="container">
 			<div class="row">
 				<center>
 					<div class="btn-group" role="group">
 
-						<span class="title"><h1> Connexion </h1></span> <br/>
-						<br>Login :</br>
+						<span class="title"><h1> Connexion </h1> </span><br/>
+						<span class="word" > <br>Login :</br> </span>
 						<INPUT type="text" SIZE="20" id=login name=login value="">
 						<br></br>
 		
-						<br>Mot de passe :</br>
+						<span class="word" > <br>Mot de passe :</br> </span>
 						<INPUT type="password" SIZE="20" id=password name=password value="">
 						<br></br>
 

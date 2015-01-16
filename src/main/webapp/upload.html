@@ -5,7 +5,8 @@
 	<meta charset='utf-8'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="styles/pages.css">
+	<link rel="stylesheet" href="styles/all.css">
+	<link rel="stylesheet" href="styles/upload.css">
 		<script type="text/javascript">
 			function fileSelected() {
 				var file = document.getElementById('fileToUpload').files[0];
@@ -61,28 +62,40 @@
 		</script>
 	</head>
 	<body>
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="murGeneral.html"> <img src="banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
-				<li class="active"><p class="navbar-text"><a href="murGeneral.html">Mur General</a></p></li>
-				<li class="active"><p class="navbar-text"><a href="recherche.html">Recherche</a></p></li>
-				<li class="active"><p class="navbar-text"><a href="profileViewer.html">Profil</a></p></li>
-				<li class="active"><p class="navbar-text"><a href="logout.html">Deconnexion</a></p></li>
-			</ul>
-		</div>
+		<nav class="navbar navbar-default barre">
+			<div class="container-fluid">	
+				<div class="navbar-header">
+					<a href="murGeneral.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:100px"> </a>
+					<a> &nbsp; &nbsp;  </a>
+				</div>			
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="murGeneral.html">Mur General</a></li>
+						<li><a href="recherche.html">Recherche</a></li>
+						<li><a href="profileViewer.html">Profil</a></li>
+						<li><a href="logout.html">Déconnexion</a></li>
+
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+							<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav><br />
 		<center>
 			<h1><b>Mediashare</b></h1>
 			<form method="POST" action="upload" enctype="multipart/form-data" >
 				<div class="row">
-					<label for="fileToUpload">Choisissez un fichier à uploader</label><br />
-					<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+					<h3><label for="fileToUpload">Choisissez un fichier à uploader</label></h3><br />
+					<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/><br />
+					<div id="fileName"></div>
+					<div id="fileSize"></div>
+					<div id="fileType"></div><br />
 					<input type="text" name="description" id="description" />
 				</div>
-				<div id="fileName"></div>
-				<div id="fileSize"></div>
-				<div id="fileType"></div>
+				<br />
 				<div class="row">
-					<input type="submit" value="Upload" name="upload" id="upload" />
+					<input type="submit" class="btn btn-primary" value="Upload" name="upload" id="upload" />
 				</div>
 				<div id="progressNumber"></div>
 			</form>
