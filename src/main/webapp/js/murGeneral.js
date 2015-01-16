@@ -14,6 +14,7 @@ function reload(){
 				content += "<div class=\"post\">";
 				content += "<div class=\"pseudo\">" + data[i].pseudo + "</div>";
 				content += "<div class=\"description\">" + data[i].description + "</div>";
+				content += "<div class=\"download\"><a href=\""+data[i].path+"\" download=\""+data[i].path+"\">Télécharger</a></div>"; 
 				if(data[i].type == "audio")
 					content += "<audio controls=\"controls\"> <source src=\"" + data[i].path + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio>";
 				
@@ -48,7 +49,7 @@ function getUser(idCookie){
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);
-			$("#user").html(data.pseudo);
+			$("#user").html("Bonjour " + data.pseudo + " !");
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
