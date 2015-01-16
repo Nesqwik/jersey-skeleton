@@ -16,7 +16,7 @@ function connect(login, password){
 				console.log(readCookie("id"));
 			}
 			else
-				$("#reponse").html("Identifiants incorrect !");		
+				$("#reponse").html("Identifiants incorrects !");		
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
