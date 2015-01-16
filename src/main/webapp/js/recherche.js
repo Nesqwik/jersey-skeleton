@@ -19,13 +19,20 @@ function getResultat(keywords, type) {
 }
 
 function afficheListFiles(data){
-	var html = '<ul>';
+	var html = "";
 	var index = 0;
 	if(data.length!=0){
 		for (index = 0; index < data.length; ++index) {
-			html = html + "<li>" + data[index].description + "</li>";
+			html = html + "<li>"+ "Utilisateur : " + data[index].pseudo + "  Post : " + data[index].description + "</li>";
+			if(data[index].type == "Musique")
+				html += "<br><audio controls=\"controls\"> <source src=\"" + data[index].chemin + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio></br>";
+			
+			if(data[index].type == "Vidéo")
+				html += "<br><video controls src=\"" + data[index].chemin + "\"> video mp4 </video></br>";
+			
+			if(data[index].type == "Image")
+				html += "<br><image controls src=\" " + data[index].chemin + "\"></image></br>";
 		}
-		html = html + "</ul>";
 		$("#reponse").html(html);
 	}
 	else $("#reponse").html("Fichier inexistant");
