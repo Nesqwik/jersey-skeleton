@@ -96,7 +96,7 @@ public class UploadServlet extends HttpServlet {
     }
 	
 	private String getFilePath(String fileName) {
-		String basePath = System.getProperty("java.io.tmpdir")+System.getProperty("file.separator") + "files/";
+		String basePath = "/files/";
 		if(FileFormatUtils.isAudioFile(fileName))
 			return basePath + "audio/";
 		
