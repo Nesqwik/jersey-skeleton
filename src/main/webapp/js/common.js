@@ -23,10 +23,28 @@ function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
 
+function disconnect(idCookie) {
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/connect/logout",
+		dataType : "json",
+		data : JSON.stringify({
+			"id" : idCookie
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log(data.success);
+			eraseCookie("id");
+			window.location.replace("connection.html");
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser is connected error: ' + textStatus);
+		}
+	});
+}
 
 
 function isConnected(idCookie){
-	var connected = false;
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -44,6 +62,4 @@ function isConnected(idCookie){
 			alert('postUser is connected error: ' + textStatus);
 		}
 	});
-	
-	return connected;
 }

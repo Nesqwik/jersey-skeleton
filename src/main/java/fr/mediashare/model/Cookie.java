@@ -1,6 +1,5 @@
 package fr.mediashare.model;
 
-import fr.mediashare.utils.UniqueIdGenerator;
 
 public class Cookie {
 	private int id;
