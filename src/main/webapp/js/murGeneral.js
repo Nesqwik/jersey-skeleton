@@ -51,7 +51,7 @@ function getUser(idCookie){
 			$("#user").html(data.pseudo);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser is connected error: ' + textStatus);
+			alert('postUser error: ' + textStatus);
 		}
 	});
 }

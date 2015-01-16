@@ -1,35 +1,19 @@
-/*function getEmail(email){
+function getUser(idCookie){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
-		url : "v1/profil/",
+		url : "v1/user",
 		dataType : "json",
 		data : JSON.stringify({
-			"email" : email,
+			"id" : idCookie
 		}),
 		success : function(data, textStatus, jqXHR) {
-			afficheUser(data)
+			console.log(data);
+			$("#email").html(data.email);
+			$("#pseudo").html(data.pseudo);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
+			alert('postUser is connected error: ' + textStatus);
 		}
 	});
 }
-
-function getPseudo(pseudo){
-	$.ajax({
-		type : 'POST',
-		contentType : 'application/json',
-		url : "v1/profil/",
-		dataType : "json",
-		data : JSON.stringify({
-			"pseudo" : pseudo,
-		}),
-		success : function(data, textStatus, jqXHR) {
-			afficheUser(data)
-		},
-		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
-		}
-	});
-}*/
