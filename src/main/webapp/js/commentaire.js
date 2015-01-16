@@ -1,4 +1,4 @@
-function comment(commentaire){
+function comment(commentaire, post, user){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -6,6 +6,8 @@ function comment(commentaire){
 		dataType : "json",
 		data : JSON.stringify({
 			"commentaire" : commentaire,
+			"idPost" : post,
+			"pseudo" : user
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);

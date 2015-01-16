@@ -4,16 +4,17 @@ public class Commentaire {
 	
 	private int idCom=0;
 	private int idPost;
-	private String commentaire, mail;
+	private String commentaire, mail, pseudo;
 	
 	public Commentaire(){
 		
 	}
 	
-	public Commentaire(String commentaire, String mail, int idPost){
+	public Commentaire(String commentaire, String mail, String pseudo, int idPost){
 		this.commentaire=commentaire;
 		this.mail=mail;
 		this.idPost=idPost;
+		this.pseudo=pseudo;
 	}
 	
 	public int getIdCom(){
@@ -46,6 +47,14 @@ public class Commentaire {
 	
 	public void setMail(String mail){
 		this.mail=mail;
+	}
+	
+	public void setPseudo(String pseudo) {
+		this.pseudo=pseudo;
+	}
+	
+	public String getPseudo() {
+		return this.pseudo;
 	}
 
 }

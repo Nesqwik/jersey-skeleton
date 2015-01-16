@@ -9,8 +9,6 @@ import javax.ws.rs.core.MediaType;
 
 import fr.mediashare.model.Commentaire;
 import fr.mediashare.model.FeedBack;
-import fr.mediashare.model.Post;
-import fr.mediashare.model.User;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
@@ -18,16 +16,16 @@ import fr.mediashare.utils.SQLiteConnection;
 @Produces(MediaType.APPLICATION_JSON)
 public class SupprimerCommentaireResource {
 
-	/*
+	
 	@POST
-	public FeedBack delete(Commentaire commentaire, User user, Post post) {
+	public FeedBack delete(Commentaire commentaire) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-		if(r.checkSuppressionCommentaire(commentaire,user,post)) {
+		if(r.checkSuppressionCommentaire(commentaire)) {
 			r.supprimerCommentaire(commentaire);
 			return new FeedBack(true,"Commentaire supprimé");
 		}
 		
 		return new FeedBack(false,"Vous ne pouvez pas supprimer ce commentaire");
-	} */
+	}
 }

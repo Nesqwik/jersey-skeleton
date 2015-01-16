@@ -1,4 +1,4 @@
-function delComment(commentaire){
+function delComment(commentaire,pseudo,post){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -6,6 +6,8 @@ function delComment(commentaire){
 		dataType : "json",
 		data : JSON.stringify({
 			"commentaire" : commentaire,
+			"pseudo" : user,
+			"idPost" : post
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data);
