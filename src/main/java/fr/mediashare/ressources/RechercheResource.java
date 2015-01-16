@@ -25,12 +25,9 @@ public class RechercheResource {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
 		list = r.search("post", "description", recherche.getKeywords());
-		for(int i=0; i< list.size(); i++){
-			list.get(i).setType(recherche.getType());
-		}
 		if(recherche.getType().equals("Musique")){
 			for(int i=0; i <list.size(); i++){
-				System.out.println(FileFormatUtils.isAudioFile(list.get(i).getChemin()));
+				list.get(i).setType(recherche.getType());
 				if(!FileFormatUtils.isAudioFile(list.get(i).getChemin())){
 					list.remove(i);
 				}
@@ -39,6 +36,7 @@ public class RechercheResource {
 		}
 		if(recherche.getType().equals("Vidéo")){
 			for(int i=0; i <list.size(); i++){
+				list.get(i).setType(recherche.getType());
 				if(!FileFormatUtils.isVideoFile(list.get(i).getChemin())){
 					list.remove(i);
 				}
@@ -47,6 +45,7 @@ public class RechercheResource {
 		}
 		if(recherche.getType().equals("PDF")){
 			for(int i=0; i<list.size(); i++){
+				list.get(i).setType(recherche.getType());
 				if(!FileFormatUtils.isPdfFile(list.get(i).getChemin())){
 					list.remove(i);
 				}
@@ -55,6 +54,7 @@ public class RechercheResource {
 		}
 		if(recherche.getType().equals("Image")){
 			for(int i=0; i<list.size(); i++){
+				list.get(i).setType(recherche.getType());
 				if(!FileFormatUtils.isImageFile(list.get(i).getChemin())){
 					list.remove(i);
 				}
@@ -63,6 +63,7 @@ public class RechercheResource {
 		}
 		if(recherche.getType().equals("Autre")){
 			for(int i=0; i<list.size(); i++){
+				list.get(i).setType(recherche.getType());
 				if(FileFormatUtils.isAudioFile(list.get(i).getChemin())||FileFormatUtils.isImageFile(list.get(i).getChemin())||FileFormatUtils.isVideoFile(list.get(i).getChemin())||FileFormatUtils.isPdfFile(list.get(i).getChemin()))					
 					list.remove(i);
 			}
