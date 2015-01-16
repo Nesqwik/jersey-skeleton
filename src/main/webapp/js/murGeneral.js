@@ -7,7 +7,7 @@ function reload(){
 		data : JSON.stringify({
 		}),
 		success : function(data, textStatus, jqXHR) {
-			console.log(data)
+			//console.log(data)
 			var i;
 			var content = "";
 			for(i = 0 ; i < data.length ; i++) {
@@ -29,7 +29,7 @@ function reload(){
 			$("#posts").html(content);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			console.log(data)
+			//console.log(data)
 			alert('erreur');
 		}
 	});
@@ -41,13 +41,14 @@ function getUser(idCookie){
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
-		url : "v1/connect/check",
+		url : "v1/user",
 		dataType : "json",
 		data : JSON.stringify({
 			"id" : idCookie
 		}),
 		success : function(data, textStatus, jqXHR) {
-			
+			console.log(data);
+			$("#user").html(data.pseudo);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser is connected error: ' + textStatus);

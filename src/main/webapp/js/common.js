@@ -33,7 +33,7 @@ function disconnect(idCookie) {
 			"id" : idCookie
 		}),
 		success : function(data, textStatus, jqXHR) {
-			console.log(data.success);
+			//console.log(data.success);
 			eraseCookie("id");
 			window.location.replace("connection.html");
 		},
@@ -54,7 +54,7 @@ function isConnected(idCookie){
 			"id" : idCookie
 		}),
 		success : function(data, textStatus, jqXHR) {
-			console.log(data.success);
+			//console.log(data.success);
 			if(!data.success)
 				window.location.replace("connection.html");
 		},

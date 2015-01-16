@@ -21,6 +21,7 @@ import fr.mediashare.ressources.SupprimerCommentaireResource;
 import fr.mediashare.ressources.SupprimerPostAdminResource;
 import fr.mediashare.ressources.SupprimerPostResource;
 import fr.mediashare.ressources.SupressionAdminResource;
+import fr.mediashare.ressources.UserResource;
 import fr.mediashare.utils.InitDB;
 
 
@@ -50,6 +51,7 @@ public class App extends Application {
     	s.add(SupprimerPostResource.class);
     	s.add(SupprimerCommentaireResource.class);
     	s.add(SupprimerPostAdminResource.class);
+    	s.add(UserResource.class);
     	return s;
     }
     public static DBI dbi;
