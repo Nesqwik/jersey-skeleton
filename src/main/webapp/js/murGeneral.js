@@ -7,7 +7,7 @@ function reload(){
 		data : JSON.stringify({
 		}),
 		success : function(data, textStatus, jqXHR) {
-			//console.log(data)
+			console.log(data)
 			var i;
 			var content = "";
 			for(i = 0 ; i < data.length ; i++) {

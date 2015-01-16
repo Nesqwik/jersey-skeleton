@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import fr.mediashare.utils.FileFormatUtils;
 import fr.mediashare.utils.Requests;
+import fr.mediashare.utils.Ressources;
 
 
 @WebServlet(name = "uploadServlet", urlPatterns = { "/upload" }, initParams = { @WebInitParam(name = "simpleParam", value = "paramValue") })
@@ -48,6 +49,7 @@ public class UploadServlet extends HttpServlet {
         	String folderPath = "";
         	String fileName = "";
         	String description = "";
+        	Integer idUser = -1;
             try {
             	// Parse the request
             	List<FileItem> items = upload.parseRequest(request);
@@ -72,6 +74,9 @@ public class UploadServlet extends HttpServlet {
                          if(item.getFieldName().equals("description")) {
                         	 description = item.getString();
                          }
+                         if(item.getFieldName().equals("cookie")) {
+                        	 idUser = Integer.parseInt(item.getString());
+                         }
                     }
                 }
                 
@@ -79,7 +84,7 @@ public class UploadServlet extends HttpServlet {
                 response.setContentType("text/html");
                 
                 Requests r = new Requests();
-                r.insertPost(description, folderPath + fileName, "toto");
+                r.insertPost(description, folderPath + fileName, Ressources.getUser(idUser).getPseudo());
                 
                 out.println("<html><head><meta http-equiv=\"refresh\" content=\"0; URL=murGeneral.html\"></head></html>");
             } catch (FileUploadException e) {
