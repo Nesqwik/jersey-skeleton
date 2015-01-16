@@ -23,7 +23,7 @@ public class Post {
 		this.idPost = id;
 	}
 	
-	public String getDescritption(){
+	public String getDescription(){
 		return this.description;
 	}
 	

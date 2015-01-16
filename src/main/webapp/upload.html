@@ -18,6 +18,7 @@
     		function preloadFunc()
     		{
     			isConnected(readCookie("id"));
+    			$("#cookie").val(readCookie("id"));
     		}
     		$(document).ready(function() {preloadFunc();});
 	</script>
@@ -31,11 +32,11 @@
 				</div>			
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="murGeneral.html">Mur General</a></li>
+						<li><a href="murGeneral.html">Mur des posts</a></li>
 						<li><a href="recherche.html">Recherche</a></li>
+						<li class="active"><a href="upload.html">Upload</a></li>
 						<li><a href="profileViewer.html">Profil</a></li>
-						<li><a href="logout.html">Déconnexion</a></li>
-
+						<li><a href="logout.html">Deconnection</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 							<li><a href="contact.html">Contact</a></li>
@@ -53,6 +54,7 @@
 					<div id="fileSize"></div>
 					<div id="fileType"></div><br />
 					<input type="text" name="description" id="description" />
+					<input type="hidden" name="cookie" id="cookie" />
 				</div>
 				<br />
 				<div class="row">

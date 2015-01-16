@@ -190,7 +190,7 @@ public class Requests {
 		Statement stmt = null;
 		try {
 			stmt = c.createStatement();
-			stmt.executeUpdate("UPDATE utilisateur SET email='"+user.getEmail()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+			stmt.executeUpdate("UPDATE utilisateur SET mail='"+user.getEmail()+"' WHERE pseudo='"+user.getPseudo()+"'");
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -206,7 +206,7 @@ public class Requests {
 		Statement stmt = null;
 		try {
 			stmt = c.createStatement();
-			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='toto'"/*+user.getPseudo()+"*/);
+			stmt.executeUpdate("UPDATE utilisateur SET mdp='"+user.getMdp()+"' WHERE pseudo='"+user.getPseudo()+"'");
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.exit(0);

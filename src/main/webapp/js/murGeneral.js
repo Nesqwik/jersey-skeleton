@@ -7,7 +7,7 @@ function reload(){
 		data : JSON.stringify({
 		}),
 		success : function(data, textStatus, jqXHR) {
-			//console.log(data)
+			console.log(data)
 			var i;
 			var content = "";
 			for(i = 0 ; i < data.length ; i++) {
@@ -19,13 +19,11 @@ function reload(){
 					content += "<audio controls=\"controls\"> <source src=\"" + data[i].path + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio>";
 				
 				if(data[i].type == "video")
-					content += "<video controls src=\"" + data[i].path + "\"> video mp4 </video>";
+					content += "<video width=\"320\" height=\"240\" controls src=\"" + data[i].path + "\"> video mp4 </video>";
 				
 				if(data[i].type == "image")
-					content += "<image controls src=\" " + data[i].path + "\"></image>";
-			
-				
-				content += "</div>";
+					content += "<image width=\"320\" height=\"240\" src=\" " + data[i].path + "\" class=\"img-responsive\"></image>";
+					content += "</div>";
 			}
 			$("#posts").html(content);
 		},

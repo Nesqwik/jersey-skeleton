@@ -1,4 +1,4 @@
-function modifierProfil(email,mdp) {
+function modifierProfil(email,mdp,pseudo) {
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -6,7 +6,8 @@ function modifierProfil(email,mdp) {
 		dataType : "json",
 		data : JSON.stringify({
 			"email" : email,
-			"mdp" : mdp
+			"mdp" : mdp,
+			"pseudo" : pseudo
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log(data)

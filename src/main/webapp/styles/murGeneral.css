@@ -2,8 +2,13 @@
 	color: red;
 }
 
-#id{
+#user{
 	color: blue;
 	text-align: center;
 	font-size: 25px;
 }
+
+/*#posts{
+	background: #FFFFFF;
+	opacity: 0.6;
+}*/
