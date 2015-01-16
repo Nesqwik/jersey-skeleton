@@ -21,9 +21,8 @@ import fr.mediashare.utils.UniqueIdGenerator;
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
 	@POST
-	public static Cookie connect(User user) {
-		Connection c = SQLiteConnection.getConnection();
-		Requests r = new Requests(c);
+	public Cookie connect(User user) {
+		Requests r = new Requests();
 		
 		
 		if(!r.idExist(user)) {
@@ -41,7 +40,7 @@ public class ConnexionResource {
 	
 	@POST
 	@Path("/check")
-	public static FeedBack isConnected(Cookie c) {
+	public FeedBack isConnected(Cookie c) {
 		if(Ressources.isConnected(c)) {
 			System.out.println("CONNECTE");
 			return new FeedBack(true, "utilisateur connecté");
@@ -54,7 +53,7 @@ public class ConnexionResource {
 	
 	@POST
 	@Path("/logout")
-	public static FeedBack logout(Cookie c) {
+	public FeedBack logout(Cookie c) {
 		if(Ressources.isConnected(c)) {
 			Ressources.removeUser(c.getId());
 			return new FeedBack(true, "utilisateur déconnecté");
