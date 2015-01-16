@@ -35,52 +35,65 @@
 				<a href="murGeneral.html"> <img src="images/banniere.png"
 					alt="Banniere du site" style="width: 100px">
 				</a> <a> &nbsp; &nbsp; </a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="murGeneral.html">Mur des Posts</a></li>
-					<li><a href="upload.html">Upload</a></li>
-					<li><a href="profileViewer.html">Profil</a></li>
-					<li><a href="logout.html">Deconnection</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-		<!--/.container-fluid -->
-	</nav>
-	<br />
-	<center>
-		<h1>
-			<b>Rechercher un fichier</b>
-		</h1>
-		<div class="container">
-			<div class="row">
-				<input type="search" class="input-sm form-control" id=recherche
-					placeholder="Recherche"> <SELECT name="liste" id=type
-					size="1">
-					<OPTION>Vidéo
-					<OPTION>Musique
-					<OPTION>Image
-					<OPTION>PDF
-					<OPTION>Autre
-				</SELECT>
-				<button type="submit" id=valider class="btn btn-primary btn-sm">Chercher</button>
-			</div>
-		</div>
-		Vos résultats :
-		<div id="reponse"></div>
-	</center>
-	<script type="text/javascript">
-				window.onload = function() {
-					console.log(readCookie("id"));
-					reload();
-				}
+				<!-- Code local -->
+				<script src="js/recherche.js"></script>
+				<link rel="stylesheet" href="styles/all.css">
+				</head>
+				<body>
+					<nav class="navbar navbar-default barre">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a href="murGeneral.html"> <img src="images/banniere.png"
+									alt="Banniere du site" style="width: 100px">
+								</a> <a> &nbsp; &nbsp; </a>
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="nav navbar-nav">
+									<li><a href="murGeneral.html">Mur des posts</a></li>
+									<li class="active"><a href="recherche.html">Recherche</a></li>
+									<li><a href="upload.html">Upload</a></li>
+									<li><a href="profileViewer.html">Profil</a></li>
+									<li><a href="logout.html">Deconnection</a></li>
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+							<!--/.nav-collapse -->
+						</div>
+						<!--/.container-fluid -->
+					</nav>
+					<br />
+					<center>
+						<h1>
+							<b>Rechercher un fichier</b>
+						</h1>
+						<div class="container">
+							<form class="navbar-form navbar-center inline-form">
+								<div class="row">
+									<input type="search" class="input-sm form-control"
+										placeholder="Recherche">
+									<FORM>
+										<SELECT name="liste" id=type size="1">
+											<OPTION>Vidéo
+											<OPTION>Musique
+											<OPTION>Image
+											<OPTION>PDF
+											<OPTION>Autre
+										</SELECT>
+									</FORM>
+									<button type="submit" class="btn btn-primary btn-sm">Chercher</button>
+								</div>
+							</form>
+							>>>>>>> 34f3ba01ba43e040398c2ede321ace0702198a00
+						</div>
+						Vos résultats :
+						<div id="reponse"></div>
+					</center>
+					<script type="text/javascript">
 				$(document).ready(function() {
 					$("#valider").click(function () {getResultat($('#recherche').val(),$('#type').val())});
 				});
 			</script>
-</body>
+				</body>
 </html>
