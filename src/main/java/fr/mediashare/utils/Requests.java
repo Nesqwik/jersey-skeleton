@@ -73,7 +73,7 @@ public class Requests {
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM post;");
+			rs = stmt.executeQuery("SELECT * FROM post ORDER BY idPost DESC;");
 			while (rs.next()){
 				Post p = new Post(rs.getString("description"),
 						rs.getString("pseudo"),
