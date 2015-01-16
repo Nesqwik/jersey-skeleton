@@ -2,14 +2,10 @@ package fr.iutinfo;
 
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import fr.mediashare.model.FeedBack;
 import fr.mediashare.model.User;
 import fr.mediashare.ressources.ConnexionResource;
 import fr.mediashare.utils.Requests;
-
 
 public class ConnexionTest {
 	

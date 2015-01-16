@@ -18,6 +18,7 @@ import fr.mediashare.utils.SQLiteConnection;
 @Produces(MediaType.APPLICATION_JSON)
 public class SupprimerCommentaireResource {
 
+	/*
 	@POST
 	public FeedBack delete(Commentaire commentaire, User user, Post post) {
 		Connection c = SQLiteConnection.getConnection();
@@ -28,5 +29,5 @@ public class SupprimerCommentaireResource {
 		}
 		
 		return new FeedBack(false,"Vous ne pouvez pas supprimer ce commentaire");
-	}
+	} */
 }
