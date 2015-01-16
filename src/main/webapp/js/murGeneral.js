@@ -34,3 +34,23 @@ function reload(){
 		}
 	});
 }
+
+
+
+function getUser(idCookie){
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/connect/check",
+		dataType : "json",
+		data : JSON.stringify({
+			"id" : idCookie
+		}),
+		success : function(data, textStatus, jqXHR) {
+			
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser is connected error: ' + textStatus);
+		}
+	});
+}

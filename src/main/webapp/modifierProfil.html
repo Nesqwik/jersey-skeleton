@@ -17,6 +17,14 @@
 		<!-- Code local -->
 		<script src="js/modifierProfil.js"></script>
 		<link rel="stylesheet" href="styles/general.css">
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+    		function preloadFunc()
+    		{
+    			isConnected(readCookie("id"));
+    		}
+    		$(document).ready(function() {preloadFunc();});
+		</script>
 	</head>
 	<body>
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">

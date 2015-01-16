@@ -73,7 +73,7 @@ public class Requests {
 		ResultSet rs = null;
 		try {
 			stmt = c.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM post;");
+			rs = stmt.executeQuery("SELECT * FROM post ORDER BY idPost DESC;");
 			while (rs.next()){
 				Post p = new Post(rs.getString("description"),
 						rs.getString("pseudo"),
@@ -359,6 +359,28 @@ public class Requests {
 		return tmp;
 	} 
 	
+	public boolean checkSuppressionCommentaireAdmin(Commentaire commentaire) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		boolean tmp = false;
+		try {
+			stmt = c.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM commentaire WHERE idCom ='"+commentaire.getIdCom()+"'");
+			if(rs.next())
+				tmp = true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tmp;
+	} 
 	public void supprimerCommentaire(Commentaire commentaire) {
 		Statement stmt = null;
 		try {

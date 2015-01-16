@@ -18,41 +18,54 @@ function submitForm() {
 
 
 
-/*
-function sendFile(filePath) {
-	var formData = new FormData(filePath);
-	$.ajax({
-		url: 'script',  //server script to process data
-		type: 'POST',
-		xhr: function() {  // custom xhr
-			myXhr = $.ajaxSettings.xhr();
-			if(myXhr.upload){ // if upload property exists
-				myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // progressbar
-			}
-			return myXhr;
-		},
-		//Ajax events
-		success: completeHandler = function(data) {
+function fileSelected() {
+	var file = document.getElementById('fileToUpload').files[0];
+	if(file){
+		var fileSize = 0;
+		if (file.size>1024*1024){
+			fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'Méga';
+		}else if(file.size>1024){
+			fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'Kilo';
+		}else{ 
+			fileSize = (Math.round(file.size * 100) / 100 ).toString();
+		}
+		fileSize += 'Octets';
+		document.getElementById('fileName').innerHTML = 'Nom : ' + file.name;
+		document.getElementById('fileSize').innerHTML = 'Taille : ' + fileSize;
+		document.getElementById('fileType').innerHTML = 'Type : ' + file.type;
+	}
+}
 
-			if(navigator.userAgent.indexOf('Chrome')) {
-				var catchFile = $(":file").val().replace(/C:\\fakepath\\/i, '');
-			}
-			else {
-				var catchFile = $(":file").val();
-			}
-			var writeFile = $(":file");
-			writeFile.html(writer(catchFile));
-			$("*setIdOfImageInHiddenInput*").val(data.logo_id);
-		},
-		error: errorHandler = function() {
-			alert("Något gick fel");
-		},
-		// Form data
-		data: formData,
-		//Options to tell JQuery not to process data or worry about content-type
-		cache: false,
-		contentType: false,
-		processData: false
-	}, 'json');
-});
-}*/
+function uploadFile() {
+	var fd = new FormData();
+	fd.append("fileToUpload", document.getElementById('fileToUpload').files[0]);
+	var xhr = new XMLHttpRequest();
+	xhr.upload.addEventListener("progress", uploadProgress, false);
+	xhr.addEventListener("load", uploadComplete, false);
+	xhr.addEventListener("error", uploadFailed, false);
+	xhr.addEventListener("abort", uploadCanceled, false);
+	xhr.open("POST", "upload");
+	xhr.send(fd);
+}
+
+function uploadProgress(evt) {
+	if(evt.lengthComputable){
+		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+		document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '/100%';
+	}else{
+		document.getElementById('progressNumber').innerHTML = 'unable to compute';
+	}
+}
+
+function uploadComplete(evt) {
+	/* appelé lors de la réponse du serveur */
+	alert("fuuuuuuuuuuuuuu\n"+evt.target.responseText);
+}
+
+function uploadFailed(evt) {
+	alert("There was an error attempting to upload the file.");
+}
+
+function uploadCanceled(evt) {
+	alert("The upload has been canceled by the user or the browser dropped the connection.");
+}

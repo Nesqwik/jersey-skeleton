@@ -1,6 +1,8 @@
 package fr.mediashare.ressources;
 
 import java.sql.Connection;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,7 +20,7 @@ import fr.mediashare.utils.UniqueIdGenerator;
 @Path("/connect")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConnexionResource {
-	@POST 
+	@POST
 	public static Cookie connect(User user) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
@@ -30,10 +32,33 @@ public class ConnexionResource {
 			int id = UniqueIdGenerator.getUniqueId();
 			User u = r.getUser(user.getPseudo());
 			Ressources.addUser(id, u);
-			for(User usr : Ressources.getUsersLogin().values()) {
-				System.out.println(usr);
+			for(Entry<Integer, User> e : Ressources.getUsersLogin().entrySet()) {
+				System.out.println(e.getKey() + "->" + e.getValue());
 			}
 			return new Cookie(id);
 		}
+	}
+	
+	@POST
+	@Path("/check")
+	public static FeedBack isConnected(Cookie c) {
+		if(Ressources.isConnected(c)) {
+			System.out.println("CONNECTE");
+			return new FeedBack(true, "utilisateur connecté");
+		} else {
+			System.out.println("NON CONNECTE");
+			return new FeedBack(false, "utilisateur non connecté");
+		}
+	}
+	
+	
+	@POST
+	@Path("/logout")
+	public static FeedBack logout(Cookie c) {
+		if(Ressources.isConnected(c)) {
+			Ressources.removeUser(c.getId());
+			return new FeedBack(true, "utilisateur déconnecté");
+		} else 
+			return new FeedBack(false, "utilisateur non connecté");
 	}
 }

@@ -2,11 +2,12 @@ package fr.mediashare.utils;
 
 import java.util.HashMap;
 
+import fr.mediashare.model.Cookie;
 import fr.mediashare.model.User;
 
 public class Ressources {
 
-	private static HashMap<Integer, User> usersLogin = new HashMap<Integer, User>();
+	private static HashMap<Integer, User> usersLogin;
 	
 	public static HashMap<Integer, User> getUsersLogin() {
 		if(usersLogin == null) usersLogin = new HashMap<Integer, User>();
@@ -14,24 +15,19 @@ public class Ressources {
 	}
 	
 	public static User getUser(Integer uniqueId) {
-		/*
-		 * return usersLogin.get(uniqueId);
-		 * 
-		 */
-		
-		
-		User u = new User();
-		u.setEmail("toto@toto.to");
-		u.setPseudo("toto");
-		u.setMdp("toto");
-		return u;
+		return getUsersLogin().get(uniqueId);
 	}
 	
 	public static void addUser(Integer uniqueId, User u) {
-		usersLogin.put(uniqueId, u);
+		getUsersLogin().put(uniqueId, u);
 	}
 	
 	public static void removeUser(Integer uniqueId) {
-		usersLogin.remove(uniqueId);
+		getUsersLogin().remove(uniqueId);
+	}
+
+	public static boolean isConnected(Cookie c) {
+		if(c == null) return false;
+		return getUsersLogin().containsKey(c.getId());
 	}
 }

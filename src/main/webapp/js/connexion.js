@@ -22,4 +22,5 @@ function connect(login, password){
 			alert('postUser error: ' + textStatus);
 		}
 	});
+	return true;
 }

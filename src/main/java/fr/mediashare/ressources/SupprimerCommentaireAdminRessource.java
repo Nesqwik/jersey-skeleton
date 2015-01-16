@@ -7,24 +7,24 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import fr.mediashare.model.Commentaire;
 import fr.mediashare.model.FeedBack;
-import fr.mediashare.model.Post;
 import fr.mediashare.utils.Requests;
 import fr.mediashare.utils.SQLiteConnection;
 
-@Path("/deletePostAdmin")
+@Path("/delcommentAdmin")
 @Produces(MediaType.APPLICATION_JSON)
-public class SupprimerPostAdminResource {
+public class SupprimerCommentaireAdminRessource {
+
 	@POST
-	public FeedBack delete(Post post) {
+	public FeedBack delete(Commentaire commentaire) {
 		Connection c = SQLiteConnection.getConnection();
 		Requests r = new Requests(c);
-
-		if(r.checkSuppressionAdmin(post)) {
-			r.supprimerPost(post);
-			return new FeedBack(true,"Post supprimé");
+		if(r.checkSuppressionCommentaireAdmin(commentaire)) {
+			r.supprimerCommentaire(commentaire);
+			return new FeedBack(true,"Commentaire supprimé");
 		}
-
-		return new FeedBack(false,"Erreur dans la suppression du post");
+		
+		return new FeedBack(false,"Erreur dans la supression du commentaire");
 	}
 }
