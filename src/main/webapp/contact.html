@@ -5,36 +5,47 @@
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href="styles/bootstrap.min.css">
 		<link rel="stylesheet" href="styles/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="styles/pages.css">
+		<link rel="stylesheet" href="styles/all.css">
+		<link rel="stylesheet" href="styles/contact.css">
 		
 		<!-- jQuery -->
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/jquery-migrate-1.2.1.min.js"></script>
 	</head>
 	<body>
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="index.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:200px;height:94px"> </a></li>
-				<li><p class="navbar-text"><a href="index.html">Accueil</a></p></li>
-				<li><p class="navbar-text"><a href="connection.html">Connexion</a></p></li>
-				<li><p class="navbar-text"><a href="inscription.html">Inscription</a></p></li>
-			</ul>
-		</div>
+		<nav class="navbar navbar-default barre">
+			<div class="container-fluid">	
+				<div class="navbar-header">
+					<a href="index.html"> <img src="images/banniere.png" alt="Banniere du site" style="width:100px"> </a>
+					<a> &nbsp; &nbsp;  </a>
+				</div>			
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Accueil</a></li>
+						<li><a href="connection.html">Connexion</a></li>
+						<li><a href="inscription.html">Inscription</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+							<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav><br />
 		<div class="container">
 			<div class="row">
-				<div class="btn-group" role="group">
+				<div class="col-sm-12 text-center">
+					<h1 class="title">Membres du projet:</h2>  <br />
+					<h3>
+						<a href="mailto:louis.guilbert@etudiant.univ-lille1.fr">Guilbert Louis</a> <br /> <br />
+						<a href="mailto:bryan.vergauwen@etudiant.univ-lile1.fr">Vergauwen Bryan</a> <br /> <br />
+						<a href="mailto:paul.petit-jove@etudiant.univ-lile1.fr">Petit-jove Paul</a> <br /> <br />
+						<a href="mailto:alexandre.cuvillier@etudiant.univ-lile1.fr">Cuvillier Alexandre</a> <br /> <br />
+						<a href="mailto:maximilien.deroo@etudiant.univ-lile1.fr">Deroo Maximilien</a> <br /> <br />
+						<a href="mailto:alexis.bulteel@etudiant.univ-lile1.fr">Bulteel Alexis</a> <br /> <br />
+						<a href="mailto:benoit.?@etudiant.univ-lile1.fr">? Benoit</a>  <br />
+					</h3>
 				</div>
 			</div>	
 		</div>
-		<p>Membres du projet:</p>
-		<ul>
-			<li><a href="mailto:louis.guilbert@etudiant.univ-lille1.fr">Guilbert Louis</a></li>
-			<li><a href="mailto:bryan.vergauwen@etudiant.univ-lile1.fr">Vergauwen Bryan</a></li>
-			<li><a href="mailto:paul.petit-jove@etudiant.univ-lile1.fr">Petit-jove Paul</a></li>
-			<li><a href="mailto:alexandre.cuvillier@etudiant.univ-lile1.fr">Cuvillier Alexandre</a></li>
-			<li><a href="mailto:maximilien.deroo@etudiant.univ-lile1.fr">Deroo Maximilien</a></li>
-			<li><a href="mailto:alexis.bulteel@etudiant.univ-lile1.fr">Bulteel Alexis</a></li>
-			<li><a href="mailto:benoit.?@etudiant.univ-lile1.fr">? Benoit</a></li>
-		</ul>
 	</body>
 </html>

@@ -28,6 +28,5 @@ public class SupprimerPostResource {
 		}
 		
 		return new FeedBack(false,"Vous ne pouvez pas supprimer ce post");
-	}
-	*/
+	} */
 }
