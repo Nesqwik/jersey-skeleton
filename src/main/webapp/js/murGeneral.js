@@ -10,11 +10,11 @@ function reload(){
 			console.log(data)
 			var i;
 			var content = "";
-			$("#posts").html("");
 			for(i = 0 ; i < data.length ; i++) {
 				content += "<div class=\"post\">";
 				content += "<div class=\"pseudo\">" + data[i].pseudo + "</div>";
-				content += "<div class=\"description\">" + data[i].description + "</div>"; 
+				content += "<div class=\"description\">" + data[i].description + "</div>";
+				content += "<div class=\"download\"><a href=\""+data[i].path+"\" download=\""+data[i].path+"\">Télécharger</a></div>"; 
 				if(data[i].type == "audio")
 					content += "<audio controls=\"controls\"> <source src=\"" + data[i].path + "\" type=\"audio/mp3\" /> Votre navigateur n'est pas compatible </audio>";
 				
@@ -22,14 +22,11 @@ function reload(){
 					content += "<video width=\"320\" height=\"240\" controls src=\"" + data[i].path + "\"> video mp4 </video>";
 				
 				if(data[i].type == "image")
-					content += "<image width=\"320\" height=\"240\" controls src=\" " + data[i].path + "\"></image>";
+					content += "<image controls src=\" " + data[i].path + "\"></image>";
 				if(data[i].path.split(".")[1] == "pdf"){
 					content += "<iframe src=\""+data[i].path+"\" width=\"500\" height=\"500\" align=\"middle\"></iframe>"
 				}
-				
-				content += "<div class=\"download\"><a href=\""+data[i].path+"\" download=\""+data[i].path+"\">Télécharger</a></div>";
 				content += "</div>";
-				
 			}
 			$("#posts").html(content);
 		},
